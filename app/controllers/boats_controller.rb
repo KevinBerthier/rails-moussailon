@@ -3,8 +3,9 @@ class BoatsController < ApplicationController
 
   # GET /boats
   def index
-    if params.include? "location"
-      @boats = Boat.where(boat_params)
+
+    if params[:city] != ""
+      @boats = Boat.where(city: params[:city])
     else
       @boats = Boat.all
     end
