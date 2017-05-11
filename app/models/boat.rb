@@ -1,6 +1,7 @@
 class Boat < ApplicationRecord
   belongs_to :user
-  validates :name, presence: true
+  has_many :bookings
+  validates :name, uniqueness: true, presence: true
   validates :address, uniqueness: true, presence: true
   validates :city, presence: true
 end
