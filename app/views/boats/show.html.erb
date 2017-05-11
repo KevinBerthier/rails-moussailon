@@ -2,4 +2,5 @@
   <p><%= @boat.city %></p>
   <p><%= @boat.address %></p>
   <p><%= @boat.user.email %></p>
+  <%= link_to "réserver", new_boat_booking_path(@boat) %>
   <br>
