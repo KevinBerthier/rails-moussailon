@@ -20,19 +20,25 @@ boats_attributes = [
     name:         "Grand voilier",
     address:      "Vieux Port",
     city:         "Marseille",
-    user:         kevin
+    user:         user,
+    price:        150,
+    capacity:     2
   },
   {
     name:         "Yacht",
     address:      "Port de Malmousque",
     city:         "Marseille",
-    user:         kevin
+    user:         user,
+    price:        150,
+    capacity:     2
   },
   {
     name:         "Grand voilier",
     address:      "Port de plaisance",
     city:         "Toulon",
-    user:         kevin
+    user:         user,
+    price:        150,
+    capacity:     2
   }
 ]
 Boat.create!(boats_attributes)
