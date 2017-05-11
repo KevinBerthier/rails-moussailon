@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20170511150321) do
-=======
-ActiveRecord::Schema.define(version: 20170511154622) do
->>>>>>> master
+ActiveRecord::Schema.define(version: 20170511164731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,7 +21,7 @@ ActiveRecord::Schema.define(version: 20170511154622) do
     t.integer "capacity"
     t.text "description"
     t.string "model"
-    t.string "type"
+    t.string "gender"
     t.integer "price"
     t.bigint "user_id"
     t.string "city"
@@ -34,8 +30,6 @@ ActiveRecord::Schema.define(version: 20170511154622) do
     t.index ["user_id"], name: "index_boats_on_user_id"
   end
 
-<<<<<<< HEAD
-=======
   create_table "bookings", force: :cascade do |t|
     t.date "date_check_in"
     t.date "date_check_out"
@@ -48,7 +42,6 @@ ActiveRecord::Schema.define(version: 20170511154622) do
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
->>>>>>> master
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -67,9 +60,7 @@ ActiveRecord::Schema.define(version: 20170511154622) do
   end
 
   add_foreign_key "boats", "users"
-<<<<<<< HEAD
-=======
   add_foreign_key "bookings", "boats"
   add_foreign_key "bookings", "users"
->>>>>>> master
+
 end
