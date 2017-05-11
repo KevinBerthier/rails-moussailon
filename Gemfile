@@ -13,8 +13,10 @@ gem 'jquery-rails'
 gem 'uglifier'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
-gem 'simple_form'
 gem 'autoprefixer-rails'
+gem 'simple_form', github: 'elsurudo/simple_form', branch: 'rails-5.1.0'
+gem 'erubis'
+
 
 # User
 gem 'devise', git: 'https://github.com/plataformatec/devise.git', branch: 'master'
@@ -22,6 +24,7 @@ gem 'devise', git: 'https://github.com/plataformatec/devise.git', branch: 'maste
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
+  gem 'annotate'
 
   gem 'pry-byebug'
   gem 'pry-rails'
