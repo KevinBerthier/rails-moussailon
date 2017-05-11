@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="text-center">Boats</h1>
+
+
+<% @boats.each do |boat| %>
+  <p><%= link_to boat.name, boat_path(boat) %></p>
+  <p><%= boat.city %></p>
+  <p><%= boat.address %></p>
+  <p><%= boat.user %></p>
+  <br>
+<% end %>
+
+<br>
+
+<%= link_to "New Boat", new_boat_path  %>

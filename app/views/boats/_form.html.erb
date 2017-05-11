@@ -1,0 +1,13 @@
+<%= simple_form_for @boat do |f| %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.input :city %>
+  <%= f.input :capacity %>
+  <%= f.input :model %>
+
+  <%= f.input :price %>
+  <%= f.input :description %>
+  <%= f.submit "submit", class: "btn btn-primary" %>
+<% end %>
+
+
