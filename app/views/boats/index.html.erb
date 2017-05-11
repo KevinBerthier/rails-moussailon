@@ -1,10 +1,15 @@
-
-<% @boats.each do |boat| %>
-  <p><%= link_to boat.name, boat_path(boat) %></p>
-  <p><%= boat.city %></p>
-  <p><%= boat.address %></p>
-  <p><%= boat.user.email %></p>
-  <br>
-<% end %>
-
-
+<div class="row">
+  <% @boats.each do |boat| %>
+    <div class="col-xs-12 col-sm-4 padded">
+      <%= link_to boat_path(boat) do %>
+        <div class="card" style="background: lightgrey;">
+          <div class="card-category"><%= boat.price %> €</div>
+          <div class="card-description">
+            <h2><%= boat.name %></h2>
+            <p><%= boat.city %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
