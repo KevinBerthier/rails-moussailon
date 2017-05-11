@@ -3,8 +3,9 @@ class BoatsController < ApplicationController
 
   # GET /boats
   def index
-    if params.include? "location"
-      @boats = Boat.where(boat_params)
+
+    if params[:city] != ""
+      @boats = Boat.where(city: params[:city])
     else
       @boats = Boat.all
     end
@@ -26,6 +27,7 @@ class BoatsController < ApplicationController
   # POST /boats
   def create
     @boat = Boat.new(boat_params)
+    @boat.user = current_user
 
     if @boat.save
       redirect_to @boat, notice: 'boat was successfully created.'
@@ -58,7 +60,7 @@ class BoatsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def boat_params
       params.require(:boat).permit(
-        :name, :address, :capacity, :description, :model, :type, :price, :city
+        :name, :address, :capacity, :description, :model, :gender, :price, :city
       )
     end
 end
