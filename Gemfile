@@ -16,10 +16,13 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 
+# User
+gem 'devise', git: 'https://github.com/plataformatec/devise.git', branch: 'master'
+
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
-  
+
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'spring'
