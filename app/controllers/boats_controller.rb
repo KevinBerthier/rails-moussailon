@@ -26,6 +26,7 @@ class BoatsController < ApplicationController
   # POST /boats
   def create
     @boat = Boat.new(boat_params)
+    @boat.user = current_user
 
     if @boat.save
       redirect_to @boat, notice: 'boat was successfully created.'
