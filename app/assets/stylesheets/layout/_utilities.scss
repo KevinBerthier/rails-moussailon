@@ -5,9 +5,49 @@
  * ------------------------------------- */
 
 // Paddings
-.padded {
+.padded-lg {
   padding-top: 5em;
   padding-bottom: 5em;
+}
+.padded-md {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.padded-sm {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+// Police Text
+.upcase {
+  text-transform: uppercase;
+}
+.txt-md {
+  font-size: 20px;
+}
+.txt-lg {
+  font-size: 46px;
+}
+.txt-description {
+  font-size: 16px;
+}
+.txt-light {
+  font-weight: 300;
+}
+.txt-regular {
+  font-weight: 400;
+}
+.txt-bold {
+  font-weight: 600;
+}
+.txt-heavy {
+  font-weight: 800;
+}
+.txt-blue {
+  color: $blue;
+}
+.txt-white {
+  color: white;
 }
 
 // Backgrounds
