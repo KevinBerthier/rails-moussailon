@@ -1,0 +1,23 @@
+<h2>Mon Profil</h2>
+<p><%= @user.first_name %></p>
+<p><%= @user.last_name %></p>
+<p><%= @user.description %></p>
+
+<h2>Mes Bateaux</h2>
+<% @user.boats.all.each do |boat| %>
+  <p><%= boat.name %> <%= boat.description %>  </p>
+  <p> Price: <%= boat.price %> €</p>
+<% end %>
+
+<h2>Reservation de mes bateaux</h2>
+<% @user.bookings.all.each do |booking| %>
+  <p><%= booking.date_check_in %> <%= booking.date_check_out %> </p>
+  <p> Prix: <%= booking.total_price %> €</p>
+<% end %>
+
+<h2>Mes reservations de bateaux</h2>
+<h2>Reservation de mes bateaux</h2>
+<% @user.bookings.all.each do |booking| %>
+  <p><%= booking.date_check_in %> <%= booking.date_check_out %> </p>
+  <p> Prix: <%= booking.total_price %> €</p>
+<% end %>
