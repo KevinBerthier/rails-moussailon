@@ -21,3 +21,12 @@
 
 
 <!-- bouton de confirmation -->
+
+
+<%= simple_form_for [@boat, @booking] do |f| %>
+  <%= f.input :date_check_in %>
+  <%= f.input :date_check_in %>
+  <%= f.input :total_price %>
+
+  <%= f.submit "Confirm Booking", class: "btn btn-primary" %>
+<% end %>
