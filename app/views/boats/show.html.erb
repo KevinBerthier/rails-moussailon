@@ -1,24 +1,43 @@
-<!-- Dans la bannière -->
-<% @boat.photos.each do |photo| %>
-  <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
-<% end %>
-<h1><%= @boat.name %></h1>
-<p><%= @boat.model %></p>
-<!-- information sur le owner -->
-<p><%= @boat.user.email %></p>
+  <% @boat.photos.each do |photo| %>
+    <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
+  <% end %>
+  <p><%= @boat.name %></p>
+  <p><%= @boat.city %></p>
+  <p><%= @boat.address %></p>
+  <p><%= @boat.user.email %></p>
+  <br>
 
-<!-- caractéristique du bateau -->
-<p><%= @boat.gender %></p>
-<p><%= @boat.address %></p>
-<p><%= @boat.city %></p>
-<p><%= @boat.capacity %></p>
-<p><%= @boat.price %></p>
+<div>
+  <h2 class="txt-md">Kévin Berthier</h2>
+  <h2 class="txt-md txt-bold txt-blue upcase">moussaillon</h2>
 
-<!-- le mot du owner -->
+  <hr class="padded-sm" style="width:400px; height:1px;" />
 
-<!-- bouton create -->
-<%= link_to "réserver", new_boat_booking_path(@boat) %>
+  <p class="txt-description txt-light">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
+</div>
 
-<!-- commentaires -->
+<hr class="padded-sm" style="width:400px; height:1px;" />
 
-<!-- autres recommandation -->
+<div>
+  <h2 class="txt-md txt-heavy">description du bâteau</h2>
+
+  <p class="txt-description txt-light">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
+
+  <%= link_to 'RÉSERVER', new_boat_booking_path(@boat), class: 'btn-blue text-center'%>
+</div>
+
+<hr class="padded-sm" style="width:400px; height:1px;" />
+
+<div>
+  <h2 class="txt-md txt-heavy">commentaires</h2>
+</div>
+
+<hr class="padded-sm" style="width:400px; height:1px;" />
+
+<div>
+  <h2 class="txt-md txt-heavy">autres recommandations</h2>
+</div>
