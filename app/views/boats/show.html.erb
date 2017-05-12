@@ -1,6 +1,21 @@
-  <p><%= @boat.name %></p>
-  <p><%= @boat.city %></p>
-  <p><%= @boat.address %></p>
-  <p><%= @boat.user.email %></p>
-  <%= link_to "réserver", new_boat_booking_path(@boat) %>
-  <br>
+<!-- Dans la bannière -->
+<h1><%= @boat.name %></h1>
+<p><%= @boat.model %></p>
+<!-- information sur le owner -->
+<p><%= @boat.user.email %></p>
+
+<!-- caractéristique du bateau -->
+<p><%= @boat.gender %></p>
+<p><%= @boat.address %></p>
+<p><%= @boat.city %></p>
+<p><%= @boat.capacity %></p>
+<p><%= @boat.price %></p>
+
+<!-- le mot du owner -->
+
+<!-- bouton create -->
+<%= link_to "réserver", new_boat_booking_path(@boat) %>
+
+<!-- commentaires -->
+
+<!-- autres recommandation -->
