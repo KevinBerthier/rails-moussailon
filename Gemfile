@@ -17,6 +17,11 @@ gem 'autoprefixer-rails'
 gem 'simple_form', github: 'elsurudo/simple_form', branch: 'rails-5.1.0'
 gem 'erubis'
 
+# Photo
+gem 'cloudinary'
+gem 'attachinary', github: 'assembler/attachinary'
+gem 'jquery-fileupload-rails'
+gem 'coffee-rails'
 
 # User
 gem 'devise', git: 'https://github.com/plataformatec/devise.git', branch: 'master'

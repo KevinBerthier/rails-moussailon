@@ -1,4 +1,7 @@
 <!-- Dans la bannière -->
+<% @boat.photos.each do |photo| %>
+  <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
+<% end %>
 <h1><%= @boat.name %></h1>
 <p><%= @boat.model %></p>
 <!-- information sur le owner -->
