@@ -1,7 +1,18 @@
 <form action="/boats" method="get" class="form-inline text-center padded">
-  <label class="sr-only" for="inlineFormInput">Name</label>
-  <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Saint Tropez" name="city">
+  <div class="form-group">
+    <label class="sr-only" for="inlineFormInput">Name</label>
+    <input type="text" class="form-control" id="inlineFormInput" placeholder="Saint Tropez" name="city">
+  </div>
 
-  <button type="submit" class="btn btn-primary">Souquer les artibuses!</button>
+  <div class="form-group">
+    <label for="checkin" class="sr-only">Checkin</label>
+    <input class="form-control" type="date" value="<%= Date.today %>" id="checkin" name="date_check_in">
+  </div>
+
+  <div class="form-group">
+    <label for="checkout" class="sr-only">Checkout</label>
+    <input class="form-control" type="date" value="<%= Date.today + 7 %>" id="checkout" name="date_check_out">
+  </div>
+
+    <button type="submit" class="btn btn-primary">Souquer les artibuses!</button>
 </form>
-
