@@ -3,7 +3,6 @@ class BoatsController < ApplicationController
 
   # GET /boats
   def index
-
     if params[:city] != ""
       @boats = Boat.where(city: params[:city])
     else
@@ -60,7 +59,8 @@ class BoatsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def boat_params
       params.require(:boat).permit(
-        :name, :address, :capacity, :description, :model, :gender, :price, :city
+        :name, :address, :capacity, :description,
+        :model, :gender, :price, :city, photos: []
       )
     end
 end

@@ -2,4 +2,8 @@
   <p><%= @boat.city %></p>
   <p><%= @boat.address %></p>
   <p><%= @boat.user.email %></p>
+  <% @boat.photos.each do |photo| %>
+  <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
+<% end %>
   <br>
+  <%= link_to 'Edit', edit_boat_path(@boat) %> |
