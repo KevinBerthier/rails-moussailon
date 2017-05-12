@@ -11,7 +11,10 @@ User.destroy_all
 Boat.destroy_all
 
 puts 'Creating user...'
-user = User.new({email: "user@exemple.com", password: "password"})
+user = User.new({email: "user@exemple.com", password: "password",
+  first_name: "Kevin", last_name: "Berthier",
+  description: "Salut je m'appelle Kevin et j'adore la mer ! Marseille
+  Mais je ne sais pas nager... A vos risques et perils"})
 user.save
 
 puts 'Creating boats...'
@@ -22,24 +25,36 @@ boats_attributes = [
     city:         "Marseille",
     user:         user,
     price:        150,
-    capacity:     2
+    capacity:     6,
+
+    description:  "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur dolorum adipisci rerum ratione eius nobis eveniet officiis at animi. Rem libero eum recusandae sit corporis voluptas, eos consectetur possimus suscipit!
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse minima odit, nostrum tenetur maiores sint odio aspernatur. Enim repudiandae dignissimos totam accusantium voluptates maiores earum quia. Non nemo explicabo dignissimos!"
   },
   {
     name:         "Yacht",
     address:      "Port de Malmousque",
     city:         "Marseille",
     user:         user,
-    price:        150,
-    capacity:     2
+    price:        200,
+    capacity:     4,
+    description:  "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur dolorum adipisci rerum ratione eius nobis eveniet officiis at animi. Rem libero eum recusandae sit corporis voluptas, eos consectetur possimus suscipit!
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse minima odit, nostrum tenetur maiores sint odio aspernatur. Enim repudiandae dignissimos totam accusantium voluptates maiores earum quia. Non nemo explicabo dignissimos!"
   },
   {
     name:         "Grand voilier",
     address:      "Port de plaisance",
     city:         "Toulon",
     user:         user,
-    price:        150,
-    capacity:     2
+    price:        50,
+    capacity:     2,
+    description:  "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur dolorum adipisci rerum ratione eius nobis eveniet officiis at animi. Rem libero eum recusandae sit corporis voluptas, eos consectetur possimus suscipit!
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse minima odit, nostrum tenetur maiores sint odio aspernatur. Enim repudiandae dignissimos totam accusantium voluptates maiores earum quia. Non nemo explicabo dignissimos!"
   }
 ]
 Boat.create!(boats_attributes)
+
+Boat.all.each do |boat|
+  boat.photo_urls = ["http://res.cloudinary.com/dzxuxl4av/image/upload/v1494580495/nv2mhzwwiimhhaseew0k.jpg"]
+end
+
 puts 'Finished!'
