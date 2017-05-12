@@ -4,6 +4,7 @@ class BoatsController < ApplicationController
   # GET /boats
   def index
     if params[:city] != ""
+      params[:city].capitalize!
       @boats = Boat.where(city: params[:city])
     else
       @boats = Boat.all
