@@ -1,3 +1,6 @@
+  <% @boat.photos.each do |photo| %>
+    <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
+  <% end %>
   <p><%= @boat.name %></p>
   <p><%= @boat.city %></p>
   <p><%= @boat.address %></p>
@@ -24,7 +27,7 @@
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
   </p>
 
-  <%= link_to 'RÉSERVER', class: 'btn-blue text-center'%>
+  <%= link_to 'RÉSERVER', new_boat_booking_path(@boat), class: 'btn-blue text-center'%>
 </div>
 
 <hr class="padded-sm" style="width:400px; height:1px;" />
@@ -38,4 +41,3 @@
 <div>
   <h2 class="txt-md txt-heavy">autres recommandations</h2>
 </div>
-

@@ -4,9 +4,10 @@
   <%= f.input :city %>
   <%= f.input :capacity %>
   <%= f.input :model %>
-  <%= f.input :gender %>
+  <%= f.input :gender, collection: Boat::GENDER, selected: 1 %>
   <%= f.input :price %>
   <%= f.input :description %>
+  <%= f.input :photos, as: :attachinary %>
   <%= f.submit "submit", class: "btn btn-primary" %>
 <% end %>
 
