@@ -25,7 +25,7 @@
     <% end %>
 
     <div class="col-xs-12 col-sm-4 padded">
-      <%= link_to boat_path(boat) do %>
+      <%= link_to boat_path(boat, request.query_parameters) do %>
         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
          url('<%= card_img_path %>')">
           <div class="card-category"><%= boat.price %> €</div>

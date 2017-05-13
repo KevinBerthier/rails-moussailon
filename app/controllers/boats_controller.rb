@@ -13,6 +13,7 @@ class BoatsController < ApplicationController
 
   # GET /boats/1
   def show
+    @booking = Booking.new
   end
 
   # GET /boats/new
