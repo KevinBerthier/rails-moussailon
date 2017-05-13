@@ -9,14 +9,13 @@
   <p> Price: <%= boat.price %> €</p>
 <% end %>
 
-<h2>Reservation de mes bateaux</h2>
+<h2>Reservation de mes bateaux  (pas fonctionnel)</h2>
 <% @user.bookings.all.each do |booking| %>
   <p><%= booking.date_check_in %> <%= booking.date_check_out %> </p>
   <p> Prix: <%= booking.total_price %> €</p>
 <% end %>
 
 <h2>Mes reservations de bateaux</h2>
-<h2>Reservation de mes bateaux</h2>
 <% @user.bookings.all.each do |booking| %>
   <p><%= booking.date_check_in %> <%= booking.date_check_out %> </p>
   <p> Prix: <%= booking.total_price %> €</p>
