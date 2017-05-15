@@ -12,7 +12,7 @@ Boat.destroy_all
 
 puts 'Creating user...'
 user = User.new({email: "user@exemple.com", password: "password",
-  first_name: "Kevin", last_name: "Berthier",
+  first_name: "Kevin", last_name: "Berthier", phone: "06 10 11 22 09",
   description: "Salut je m'appelle Kevin et j'adore la mer ! Marseille
   Mais je ne sais pas nager... A vos risques et perils"})
 user.save
