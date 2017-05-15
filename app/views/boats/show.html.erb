@@ -35,6 +35,12 @@
       <% end %>
 
       <%= cl_image_tag image, height: 150, width: 150, crop: :fill, class: 'avatar' %>
+
+      <div class="maskedborder">
+        <div class="masked-image">
+          <%= cl_image_tag image%>
+        </div>
+      </div>
     </div>
   </div>
 
