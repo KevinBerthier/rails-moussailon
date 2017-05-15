@@ -1,6 +1,9 @@
 .card-white {
   background-color: white;
-  border: 1px solid $gray;
+  padding: 15px 25px;
+  border-radius: 2px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 .card-show {
   background-size: cover !important;
@@ -8,10 +11,14 @@
   position: relative;
 }
 .card-show-title {
-
+  position: absolute;
+  top: 20px;
+  left: 30px;
 }
 .card-show-description {
-
+  position: absolute;
+  top: 90px;
+  left: 30px;
 }
 .card-show-price {
 
