@@ -1,43 +1,42 @@
-<form action="/boats" method="get" class="form-inline text-center padded">
-  <div class="form-group">
-    <label class="sr-only" for="inlineFormInput">City</label>
-    <input type="text" class="form-control" id="inlineFormInput" placeholder="Saint Tropez" name="city" value="<%= params[:city] %>">
-  </div>
-
-  <div class="form-group">
-    <label for="checkin" class="sr-only">Checkin</label>
-    <input class="form-control" type="date" value="<%= params[:date_check_in] %>" id="checkin" name="date_check_in">
-  </div>
-
-  <div class="form-group">
-    <label for="checkout" class="sr-only">Checkout</label>
-    <input class="form-control" type="date" value="<%= params[:date_check_out] %>" id="checkout" name="date_check_out">
-  </div>
-
-    <button type="submit" class="btn btn-blue">Souquer les artibuses!</button>
-</form>
-
-<div class="row">
-  <% @boats.each do |boat| %>
-    <% card_img_path = %>
-    <% if boat.photos? %>
-    <% cl_image_path boat.photos.first.path, height: 300, width: 400, crop: :fill %>
-    <% end %>
-
-    <div class="col-xs-12 col-sm-4 padded">
-      <%= link_to boat_path(boat, request.query_parameters) do %>
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-         url('<%= card_img_path %>')">
-          <div class="card-category"><%= boat.price %> €</div>
-          <div class="card-description">
-            <h2><%= boat.name %></h2>
-            <p><%= boat.city %></p>
-          </div>
-        </div>
-      <% end %>
+<div class="container">
+  <form action="/boats" method="get" class="form-inline text-center padded">
+    <div class="form-group">
+      <label class="sr-only" for="inlineFormInput">City</label>
+      <input type="text" class="form-control" id="inlineFormInput" placeholder="Saint Tropez" name="city" value="<%= params[:city] %>">
     </div>
-  <% end %>
+
+    <div class="form-group">
+      <label for="checkin" class="sr-only">Checkin</label>
+      <input class="form-control" type="date" value="<%= params[:date_check_in] %>" id="checkin" name="date_check_in">
+    </div>
+
+    <div class="form-group">
+      <label for="checkout" class="sr-only">Checkout</label>
+      <input class="form-control" type="date" value="<%= params[:date_check_out] %>" id="checkout" name="date_check_out">
+    </div>
+
+      <button type="submit" class="btn btn-blue">Souquer les artibuses!</button>
+  </form>
+
+  <div class="row">
+    <% @boats.each do |boat| %>
+      <% card_img_path = %>
+      <% if boat.photos? %>
+      <% cl_image_path boat.photos.first.path, height: 300, width: 400, crop: :fill %>
+      <% end %>
+
+      <div class="col-xs-12 col-sm-4 padded">
+        <%= link_to boat_path(boat, request.query_parameters) do %>
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+           url('<%= card_img_path %>')">
+            <div class="card-category"><%= boat.price %> €</div>
+            <div class="card-description">
+              <h2><%= boat.name %></h2>
+              <p><%= boat.city %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
-
-
-
