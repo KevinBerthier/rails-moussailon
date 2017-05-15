@@ -26,8 +26,14 @@
 .upcase {
   text-transform: uppercase;
 }
+.txt-sl {
+  font-size: 12px;
+}
 .txt-md {
   font-size: 20px;
+}
+.txt-mmd {
+  font-size: 30px;
 }
 .txt-lg {
   font-size: 46px;
@@ -78,3 +84,18 @@ hr {
   margin-bottom: 22px;
   border-top: 1px solid #aeaeae;
 }
+
+// Sandbox
+.testbleu {
+  background: #4cd4d5;
+}
+
+.testgris {
+  background: blue;
+}
+
+#image-boat {
+  max-width:100%;
+}
+
+
