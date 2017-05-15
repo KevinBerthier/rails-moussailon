@@ -42,7 +42,13 @@
              <p class="txt-description txt-bold"><%= @boat.model = "" ? "-" : @boat.model %></p>
              <p class="txt-description txt-bold"><%= @boat.city %></p>
              <p class="txt-description txt-bold"><%= @boat.user.first_name + " " + @boat.user.last_name %></p>
-             <p class="txt-description txt-bold"><%= @boat.user.phone = "" ? "-" : @boat.user.phone %></p>
+             <p class="txt-description txt-bold">
+             <% if @boat.user.phone != nil %>
+             <%= @boat.user.phone %>
+             <% else %>
+             <%= "-" %>
+             <% end %>
+             </p>
            </div>
         </div>
         <hr style="height:1px;" />
