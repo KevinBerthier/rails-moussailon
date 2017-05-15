@@ -23,15 +23,18 @@ class BookingsController < ApplicationController
     @booking.boat.price * (@booking.date_check_out - @booking.date_check_in + 1)
     @booking.save
     if @booking.save
-      redirect_to dashboard_path, notice: 'booking was successfully created.'
+      redirect_to dashboard_path, notice: 'Votre reservation a bien été enregistrée.'
     else
       render :new
     end
   end
 
+  def edit
+  end
+
   def update
     if @booking.update(booking_params)
-      redirect_to @booking, notice: 'booking was successfully updated.'
+      redirect_to @booking, notice: 'Votre reservation a bien été modifiée.'
     else
       render :edit
     end
@@ -40,7 +43,7 @@ class BookingsController < ApplicationController
   # DELETE /bookings/1
   def destroy
     @booking.destroy
-    redirect_to bookings_url, notice: 'booking was successfully destroyed.'
+    redirect_to bookings_url, notice: 'Votre reservation a bien été annulée.'
   end
 
   private
