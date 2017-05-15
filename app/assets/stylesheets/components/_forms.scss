@@ -10,16 +10,15 @@
   width:100%;
   height:auto;
   font-size:em(14px);
-  border-radius: 1px;
-  border-radius: 7px;
-  background: rgba(255, 255, 255, 0.4);
-  color: #4e4e4e;
+  border-radius: 4px;
+  background: white;
+  z-index: 900;
 }
 
 .banner-form {
   background: url("form-img") no-repeat center center fixed;
   background-position: center;
   background-size: cover;
-  height: 170vh;
+  height: calc(170vh - 70px);
   padding: 50px 15px;
 }
