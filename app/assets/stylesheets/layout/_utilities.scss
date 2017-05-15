@@ -33,14 +33,19 @@
 .upcase {
   text-transform: uppercase;
 }
+
 .txt-sm {
   font-size: 12px;
 }
 .txt-description {
   font-size: 16px;
 }
+
 .txt-md {
   font-size: 20px;
+}
+.txt-mmd {
+  font-size: 30px;
 }
 .txt-lg {
   font-size: 46px;
@@ -88,3 +93,13 @@ hr {
   margin-bottom: 22px;
   border-top: 1px solid #aeaeae;
 }
+
+// margins
+.margin-top {
+  margin-top: 45px;
+}
+
+.margin-btn {
+  margin: 45px;
+}
+

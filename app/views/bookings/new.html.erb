@@ -1,41 +1,98 @@
-<div class="container">
-  <h1 class="text-center">Recapitulation avant l'abordage</h1>
-  <!-- fil d'ariane -->
+<!-- fil d'ariane -->
 
-  <!-- date de résa -->
-  <div>
-  <h2>Date de réservation</h2>
-  <p>Prise en main : <%= @booking.date_check_in %></p>
-  <p>Retour : <%= @booking.date_check_out %></p>
-  <p>Durée : <%= d = (@booking.date_check_out - @booking.date_check_in + 1).to_i %> <%= d == 1 ? "jour" : "jours"  %></p>
+<!-- wrapper -->
+<div class="wrapper">
+  <!-- container texte and photo -->
+  <div class="container">
+    <div class="row">
+
+      <div class="col-xs-12 col-md-6">
+      <!-- colonne text -->
+
+       <div class="">
+        <!-- résa -->
+        <h2 class="txt-mmd padded-md">Dates de réservation</h2>
+        <div class="row">
+           <div class="col-xs-6 col-md-6">
+             <p class="txt-sl">Prise en main</p>
+             <p class="txt-bold"><%= @booking.date_check_in %></p>
+           </div>
+           <div class="col-xs-6 col-md-6">
+             <p class="txt-sl">Retour</p>
+             <p class="txt-bold"><%= @booking.date_check_out %></p>
+           </div>
+        </div>
+        <p class="txt-description padded-md">Durée de navigation : <strong><%= d = (@booking.date_check_out - @booking.date_check_in + 1).to_i %> <%= d == 1 ? "jour" : "jours"  %></strong></p>
+        <hr style="height:1px; width: 450px;" />
+       </div>
+
+       <div class="">
+        <!-- caracteristiques -->
+        <h2 class="txt-mmd padded-md">Embarcation</h2>
+        <div class="row">
+           <div class="col-xs-6 col-md-6">
+             <p class="txt-description">Nom du bâteau</p>
+             <p class="txt-description">Modèle</p>
+             <p class="txt-description">Port d'attache</p>
+             <p class="txt-description">Propriétaire</p>
+             <p class="txt-description">Téléphone</p>
+           </div>
+           <div class="col-xs-6 col-md-6">
+             <p class="txt-description txt-bold"><%= @boat.name %></p>
+             <p class="txt-description txt-bold"><%= @boat.model = "" ? "-" : @boat.model %></p>
+             <p class="txt-description txt-bold"><%= @boat.city %></p>
+             <p class="txt-description txt-bold"><%= @boat.user.first_name + " " + @boat.user.last_name %></p>
+           </div>
+        </div>
+        <hr style="height:1px; width: 450px;" />
+       </div>
+
+       <div class="">
+       <!-- prix -->
+        <h2 class="txt-mmd padded-md">Prix</h2>
+        <div class="row">
+           <div class="col-xs-6 col-md-6">
+             <p class="txt-description">Prix total</p>
+             <p class="txt-description">Caution</p>
+           </div>
+           <div class="col-xs-6 col-md-6">
+             <p class="txt-description txt-bold"><%= @booking.total_price  %> €</p>
+             <p class="txt-description txt-bold"><%= @booking.total_price * 3  %> €</p>
+           </div>
+        </div>
+        <hr style="height:1px; width: 450px;" />
+       </div>
+
+      </div>
+
+      <div class="col-xs-12 col-md-6">
+      <!-- photo -->
+       <div class="margin-top text-center" id="image-boat" >
+         <%= cl_image_tag @boat.photos.first.path, height: 696, width: 550, crop: :fill %>
+       </div>
+      </div>
+
+    </div>
   </div>
 
-  <!-- info bateau -->
-  <div>
-  <h2>Embarcation</h2>
-  <p><%= @boat.name %></p>
-  <p><%= @boat.model %></p>
-  <p><%= @boat.gender %></p>
-  <p>Capacité : <%= @boat.capacity %> personnes</p>
-  <p><%= @boat.address %></p>
-  <p><%= @boat.city %></p>
+  <!-- container button -->
+  <div class="container">
+    <div class="row">
+
+      <div class="col-xs-12 col-md-6 text-center">
+       <div id="btn-conf-booking">
+         <%= simple_form_for [@boat, @booking] do |f| %>
+         <%= f.input :date_check_in, as: :hidden %>
+         <%= f.input :date_check_out, as: :hidden  %>
+         <%= f.submit "Confirm Booking", class: "btn btn-blue margin-btn" %>
+         <% end %>
+       </div>
+      </div>
+
+      <div class="col-xs-12 col-md-6">
+      </div>
+
+    </div>
   </div>
 
-  <!-- info prorio -->
-
-  <!-- Récap prix -->
-  <div>
-  <h2>Prix</h2>
-  <p>Prix par jour : <%= @boat.price %> €</p>
-  <p>Prix total : <%= @booking.total_price  %> €</p>
-  </div>
-  <!-- bouton de confirmation -->
-
-
-  <%= simple_form_for [@boat, @booking] do |f| %>
-    <%= f.input :date_check_in, as: :hidden %>
-    <%= f.input :date_check_out, as: :hidden  %>
-
-    <%= f.submit "Confirm Booking", class: "btn btn-primary" %>
-  <% end %>
 </div>
