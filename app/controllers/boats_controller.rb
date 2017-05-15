@@ -18,7 +18,11 @@ class BoatsController < ApplicationController
 
   # GET /boats/new
   def new
-    @boat = Boat.new
+    if current_user
+      @boat = Boat.new
+    else
+      redirect_to new_user_registration_path
+    end
   end
 
   # GET /boats/1/edit
