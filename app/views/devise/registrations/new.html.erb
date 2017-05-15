@@ -1,24 +1,26 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <h2 class="txt-bold">Créer un compte</h2>
-      <div class="background-form">
-        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-          <%= f.error_notification %>
+<div class="banner-form">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+        <div class="background-form">
+          <h2 class="txt-bold">Créer un compte</h2>
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= f.error_notification %>
 
-          <div class="form-inputs">
-            <%= f.input :email, required: true, autofocus: true %>
-            <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-            <%= f.input :password_confirmation, required: true %>
-          </div>
+            <div class="form-inputs">
+              <%= f.input :email, required: true, autofocus: true %>
+              <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+              <%= f.input :password_confirmation, required: true %>
+            </div>
 
-          <div class="form-actions">
-            <%= f.button :submit, "Sign up" %>
+            <div class="form-actions">
+              <%= f.button :submit, "Sign up" %>
+            </div>
+          <% end %>
+          <div class="padded">
+           <%= render "devise/shared/links" %>
           </div>
-        <% end %>
-      </div>
-      <div class="padded">
-        <%= render "devise/shared/links" %>
+        </div>
       </div>
     </div>
   </div>
