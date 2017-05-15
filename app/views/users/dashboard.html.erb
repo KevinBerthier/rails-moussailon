@@ -1,19 +1,21 @@
 <div class="container">
-  <h2>Bonjour <%=  @user.first_name %>!</h2>
+  <h2 class="txt-heavy txt-blue">Bonjour <%=  @user.first_name %>!</h2>
 
-  <div>
-  <% if current_user.photo? %>
-    <%= cl_image_tag current_user.photo.path, width: 300, height: 300, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-  <% else %>
-    <%= image_tag "http://placehold.it/300x300", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-  <% end %>
-  <p><%= @user.first_name %></p>
-  <p><%= @user.last_name %></p>
-  <%= link_to "Editer votre profil", edit_profile_path, class: "btn"  %>
-  </div>
 
+  <div class="row">
+    <div class="col-offset-12 col-sm-2">
+      <% if current_user.photo? %>
+        <%= cl_image_tag current_user.photo.path, width: 300, height: 300, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+      <% else %>
+        <%= image_tag "http://placehold.it/300x300", class: "avatar avatar-large dropdown-toggle text-center", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+      <% end %>
+      <p class="txt-md txt-light text-center"><%= @user.first_name %></p>
+      <p class="txt-md txt-light text-center"><%= @user.last_name %></p>
+      <%= link_to "Editez votre profil", edit_profile_path, class: "btn btn-simple" %>
+      </div>
+    </div>
   <div>
-  <h2>Mon annonce</h2>
+  <h2 class="txt-md txt-heavy">Mon annonce</h2>
   <% @user.boats.all.each do |boat| %>
     <% if boat.photos? %>
       <% cl_image_tag boat.photos.first.path, height: 300, crop: :fill %>
@@ -27,13 +29,13 @@
   <% end %>
   </div>
 
-  <h2>Reservation de mes bateaux  (pas fonctionnel)</h2>
+  <h2 class="txt-md txt-heavy">Reservation de mes bateaux  (pas fonctionnel)</h2>
   <% @user.bookings.all.each do |booking| %>
     <p><%= booking.date_check_in %> <%= booking.date_check_out %> </p>
     <p> Prix: <%= booking.total_price %> €</p>
   <% end %>
 
-  <h2>Mes reservations de bateaux</h2>
+  <h2 class="txt-md txt-heavy">Mes reservations de bateaux</h2>
   <% @user.bookings.all.each do |booking| %>
     <p><%= booking.date_check_in %> <%= booking.date_check_out %> </p>
     <p> Prix: <%= booking.total_price %> €</p>
