@@ -1,6 +1,10 @@
+.card-white {
+  background-color: white;
+  border: 1px solid $gray;
+}
 .card-show {
   background-size: cover !important;
-  height: 200px;
+  height: 300px;
   position: relative;
 }
 .card-show-title {

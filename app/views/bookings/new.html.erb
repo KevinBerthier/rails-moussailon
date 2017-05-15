@@ -1,32 +1,39 @@
+<h1 class="text-center">Recapitulation avant l'abordage</h1>
 <!-- fil d'ariane -->
 
 <!-- date de résa -->
+<div>
 <h2>Date de réservation</h2>
-<p>prise en main</p>
-<p>retour</p>
+<p>Prise en main : <%= @booking.date_check_in %></p>
+<p>Retour : <%= @booking.date_check_out %></p>
+<p>Durée : <%= d = (@booking.date_check_out - @booking.date_check_in + 1).to_i %> <%= d == 1 ? "jour" : "jours"  %></p>
+</div>
 
 <!-- info bateau -->
-<h2>Embaraction</h2>
+<div>
+<h2>Embarcation</h2>
 <p><%= @boat.name %></p>
 <p><%= @boat.model %></p>
+<p><%= @boat.gender %></p>
+<p>Capacité : <%= @boat.capacity %> personnes</p>
 <p><%= @boat.address %></p>
 <p><%= @boat.city %></p>
-<p><%= @boat.capacity %></p>
-<p><%= @boat.price %></p>
+</div>
 
 <!-- info prorio -->
 
 <!-- Récap prix -->
+<div>
 <h2>Prix</h2>
-
-
+<p>Prix par jour : <%= @boat.price %> €</p>
+<p>Prix total : <%= @booking.total_price  %> €</p>
+</div>
 <!-- bouton de confirmation -->
 
 
 <%= simple_form_for [@boat, @booking] do |f| %>
-  <%= f.input :date_check_in %>
-  <%= f.input :date_check_in %>
-  <%= f.input :total_price %>
+  <%= f.input :date_check_in, as: :hidden %>
+  <%= f.input :date_check_out, as: :hidden  %>
 
   <%= f.submit "Confirm Booking", class: "btn btn-primary" %>
 <% end %>

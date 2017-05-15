@@ -1,43 +1,128 @@
-  <% @boat.photos.each do |photo| %>
-    <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
-  <% end %>
-  <p><%= @boat.name %></p>
-  <p><%= @boat.city %></p>
-  <p><%= @boat.address %></p>
-  <p><%= @boat.user.email %></p>
-  <br>
+<% if @boat.photos? %>
+  <% image = cl_image_path @boat.photos.first.path, height: 300, crop: :fill %>
+<% else %>
+  <% image = image_path 'boat1.jpg' %>
+<% end %>
 
-<div>
-  <h2 class="txt-md">Kévin Berthier</h2>
-  <h2 class="txt-md txt-bold txt-blue upcase">moussaillon</h2>
+<div class="card-show" style= "background-image: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%), url('<%= image %>'); ">
+  <p class="card-show-title txt-yellow txt-heavy txt-lg"><%= @boat.name %></p>
+</div>
+
+
+<div class="row">
+  <div class="col-offset-2 col-sm-6">
+    <h2 class=" txt-md txt-heavy"><%= @boat.user.first_name%> <%= @boat.user.last_name %></h2>
+    <h2 class="txt-md txt-bold txt-blue upcase">moussaillon</h2>
+
+    <hr class="padded-sm" style="width:400px; height:2px;" />
+
+    <p class="txt-description txt-light padded-sm">
+      <%= @boat.user.description %>
+    </p>
+  </div>
+
+  <div class="col-offset-2 col-sm-6 text-center">
+    <% if @boat.user.photo? %>
+      <% image = cl_image_path @boat.user.photo.path %>
+    <% else %>
+      <% image = image_path 'boat1.jpg' %>
+    <% end %>
+
+    <%= cl_image_tag image, height: 100, width: 100, crop: :fill, class: 'avatar' %>
+  </div>
+</div>
+
+<hr>
+
+  <div>
+    <h2 class="txt-md txt-heavy">description du bâteau</h2>
+
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-3 text-center">
+        <%= image_tag 'icon-type.png', class: "icon" %>
+        <h3 class="upcase txt-light txt-description">type</h3>
+        <p class="txt-description"><%= @boat.gender %></p>
+      </div>
+      <div class="col-xs-12 col-sm-3 text-center">
+        <%= image_tag 'icon-port.png', class: "icon" %>
+        <h3 class="upcase txt-light txt-description">port d'attache</h3>
+        <p class="txt-description"><%= @boat.city %></p>
+      </div>
+      <div class="col-xs-12 col-sm-3 text-center">
+        <%= image_tag 'icon-capacity.png', class: "icon" %>
+        <h3 class="upcase txt-light txt-description">type</h3>
+        <p class="txt-description"><%= @boat.capacity %> personnes</p>
+      </div>
+      <div class="col-xs-12 col-sm-3 text-center">
+        <%= image_tag 'icon-type.png', class: "icon" %>
+        <h3 class="upcase txt-light txt-description">prix</h3>
+        <p class="txt-description"><%= @boat.price %> €/j</p>
+      </div>
+    </div>
+
+
+    <p class="txt-description txt-light padded-lg">
+      <%= @boat.description %>
+    </p>
+  </div>
+
+
+  <form action="<%= new_boat_booking_path(@boat) %>" method="GET" class="form-inline text-center padded">
+    <div class="form-group">
+      <label for="checkin" class="sr-only">Checkin</label>
+      <input class="form-control" type="date" value="<%= params[:date_check_in] %>" id="checkin" name="date_check_in">
+    </div>
+
+    <div class="form-group">
+      <label for="checkout" class="sr-only">Checkout</label>
+      <input class="form-control" type="date" value="<%= params[:date_check_out] %>" id="checkout" name="date_check_out">
+    </div>
+
+    <button type="submit" class="btn btn-primary">RÉSERVER</button>
+  </form>
+
 
   <hr class="padded-sm" style="width:400px; height:1px;" />
 
-  <p class="txt-description txt-light">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  </p>
-</div>
+  <div>
+    <h2 class="txt-md txt-heavy">commentaires</h2>
 
-<hr class="padded-sm" style="width:400px; height:1px;" />
 
-<div>
-  <h2 class="txt-md txt-heavy">description du bâteau</h2>
+      <div class="row">
+        <div class="col-xs-12 col-sm-4">
+          <div class="card-white">
+            <%= image_tag 'kevin.png', class: "avatar" %>
+            <h4 class="txt-description txt-regular">Arnaud</h4>
+            <p class="txt-description txt-light">11 mai 2017</p>
+            <p class="txt-description txt-light">Nous avons passé une magnifique journée dans les Calanques à bord du Shot Gun. Je recommande à 200% !</p>
+          </div>
+        </div>
 
-  <p class="txt-description txt-light">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  </p>
+        <div class="col-xs-12 col-sm-4">
+          <div class="card-white">
+            <%= image_tag 'loic.png', class: "avatar" %>
+            <h4 class="txt-description txt-regular">Louis</h4>
+            <p class="txt-description txt-light">11 mai 2017</p>
+            <p class="txt-description txt-light">Très beau bâteau, belle ligne de flottaison, tient bien la mer. Excellente navigation malgré une météo grisonnante.</p>
+          </div>
+        </div>
 
-  <%= link_to 'RÉSERVER', new_boat_booking_path(@boat), class: 'btn-blue text-center'%>
-</div>
+        <div class="col-xs-12 col-sm-4">
+          <div class="card-white">
+            <%= image_tag 'odaia.png', class: "avatar" %>
+            <h4 class="txt-description txt-regular">Odaia</h4>
+            <p class="txt-description txt-light">11 mai 2017</p>
+            <p class="txt-description txt-light">Elliot, mon fils, a adoré danser sur le pont avant de sauter du mât. Merci pour ce bel après-midi en mode pirate des mers turquoises !</p>
+          </div>
+        </div>
+      </div>
 
-<hr class="padded-sm" style="width:400px; height:1px;" />
+  </div>
 
-<div>
-  <h2 class="txt-md txt-heavy">commentaires</h2>
-</div>
+  <hr class="padded-sm" style="width:400px; height:1px;" />
 
-<hr class="padded-sm" style="width:400px; height:1px;" />
+  <div>
+    <h2 class="txt-md txt-heavy">autres recommandations</h2>
+  </div>
 
-<div>
-  <h2 class="txt-md txt-heavy">autres recommandations</h2>
-</div>
