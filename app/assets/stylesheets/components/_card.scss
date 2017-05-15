@@ -1,3 +1,4 @@
+// Cards pour les reviews
 .card-white {
   background-color: white;
   padding: 15px 25px;
@@ -5,6 +6,8 @@
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
+
+// Card de Boats Show
 .card-show {
   background-size: cover !important;
   height: 300px;
@@ -20,20 +23,26 @@
   top: 90px;
   left: 30px;
 }
-.card-show-price {
 
-}
-
-
+// Cart de Boats Index
 .card-index {
-
+  background-size: cover !important;
+  height: 400px;
+  position: relative;
 }
 .card-index-title {
-
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+.card-index-user {
+  position: absolute;
+  bottom: 30px;
+  right: 20px;
 }
 .card-index-description {
-
-}
-.card-index-price {
-
+  position: absolute;
+  bottom: 30px;
+  left: 20px;
+  margin-bottom: 0px;
 }

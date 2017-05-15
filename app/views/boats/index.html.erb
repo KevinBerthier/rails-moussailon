@@ -1,42 +1,65 @@
 <div class="container">
-  <form action="/boats" method="get" class="form-inline text-center padded">
-    <div class="form-group">
-      <label class="sr-only" for="inlineFormInput">City</label>
-      <input type="text" class="form-control" id="inlineFormInput" placeholder="Saint Tropez" name="city" value="<%= params[:city] %>">
-    </div>
 
-    <div class="form-group">
-      <label for="checkin" class="sr-only">Checkin</label>
-      <input class="form-control" type="date" value="<%= params[:date_check_in] %>" id="checkin" name="date_check_in">
-    </div>
+  <!-- Formulaire de recherche par dates -->
 
-    <div class="form-group">
-      <label for="checkout" class="sr-only">Checkout</label>
-      <input class="form-control" type="date" value="<%= params[:date_check_out] %>" id="checkout" name="date_check_out">
-    </div>
+  <div class="padded-md">
+    <form action="/boats" method="get" class="form-inline text-center padded">
+      <div class="form-group">
+        <label class="sr-only" for="inlineFormInput">City</label>
+        <input type="text" class="form-control" id="inlineFormInput" placeholder="Saint Tropez" name="city" value="<%= params[:city] %>">
+      </div>
 
-      <button type="submit" class="btn btn-blue">Souquer les artibuses!</button>
-  </form>
+      <div class="form-group">
+        <label for="checkin" class="sr-only">Checkin</label>
+        <input class="form-control" type="date" value="<%= params[:date_check_in] %>" id="checkin" name="date_check_in">
+      </div>
+
+      <div class="form-group">
+        <label for="checkout" class="sr-only">Checkout</label>
+        <input class="form-control" type="date" value="<%= params[:date_check_out] %>" id="checkout" name="date_check_out">
+      </div>
+
+        <button type="submit" class="btn btn-blue">Souquer les artibuses!</button>
+    </form>
+  </div>
+
+
+  <!-- Liste des résultats de recherche -->
 
   <div class="row">
     <% @boats.each do |boat| %>
       <% card_img_path = %>
       <% if boat.photos? %>
-      <% cl_image_path boat.photos.first.path, height: 300, width: 400, crop: :fill %>
+      <% cl_image_path boat.photos.first.path, height: 500, width: 400, crop: :fill %>
       <% end %>
 
-      <div class="col-xs-12 col-sm-4 padded">
+      <% user_img = %>
+      <% if boat.user.photo? %>
+        <% cl_image_path boat.user.photo.path %>
+      <% else %>
+        <% image_path 'captain.png' %>
+      <% end %>
+
+      <div class="col-xs-12 col-sm-3 padded-md">
         <%= link_to boat_path(boat, request.query_parameters) do %>
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+          <div class="card-index" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
            url('<%= card_img_path %>')">
-            <div class="card-category"><%= boat.price %> €</div>
-            <div class="card-description">
-              <h2><%= boat.name %></h2>
-              <p><%= boat.city %></p>
+            <div class="card-index-title txt-white">
+              <p class="txt-bold txt-md"><%= boat.name %></p>
+              <p class="txt-regular txt-sm"><%= boat.model %></p>
+            </div>
+            <div class="card-index-description txt-white">
+              <p class="txt-height-sm"><%= boat.city %></p>
+              <%= boat.price %> €/j
+            </div>
+            <div class="card-index-user">
+              <%= cl_image_tag user_img, height: 40, width: 40, crop: :fill, class: 'avatar avatar-bordered' %>
             </div>
           </div>
         <% end %>
       </div>
     <% end %>
   </div>
+<!-- fin de container -->
 </div>
+
