@@ -1,0 +1,24 @@
+.padded  {
+  padding-top: 1em;
+}
+
+.background-form {
+  display:flex;
+  flex-direction: column;
+  padding:30px;
+  margin: 0 auto;
+  width:100%;
+  height:auto;
+  font-size:em(14px);
+  border-radius: 4px;
+  background: white;
+  z-index: 900;
+}
+
+.banner-form {
+  background: url("form-img") no-repeat center center fixed;
+  background-position: center;
+  background-size: cover;
+  height: calc(170vh - 70px);
+  padding: 50px 15px;
+}

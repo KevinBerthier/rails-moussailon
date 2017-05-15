@@ -1,10 +1,17 @@
-<div class="container">
-<%= simple_form_for @user, url: edit_profile_path, method: :patch do |f| %>
-  <%= f.input :first_name %>
-  <%= f.input :last_name %>
-  <%= f.input :phone %>
-  <%= f.input :description %>
-  <%= f.input :photo, as: :attachinary %>
-  <%= f.submit "submit", class: "btn btn-primary" %>
-<% end %>
-<div>
+<div class="banner-form">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+        <div class="background-form">
+        <h2 class="txt-bold">Mousaillon</h2>
+          <%= simple_form_for @user, url: edit_profile_path, method: :patch do |f| %>
+            <%= f.input :first_name %>
+            <%= f.input :last_name %>
+            <%= f.input :photo, as: :attachinary %>
+            <%= f.submit "submit", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

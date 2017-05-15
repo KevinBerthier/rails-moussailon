@@ -1,14 +1,24 @@
-<%= simple_form_for @boat do |f| %>
-  <%= f.input :name %>
-  <%= f.input :address %>
-  <%= f.input :city %>
-  <%= f.input :capacity %>
-  <%= f.input :model %>
-  <%= f.input :gender, collection: Boat::GENDER, selected: 1 %>
-  <%= f.input :price %>
-  <%= f.input :description %>
-  <%= f.input :photos, as: :attachinary %>
-  <%= f.submit "submit", class: "btn btn-primary" %>
-<% end %>
-
+<div class="banner-form">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+        <div class="background-form">
+          <h2 class="txt-bold">Entrez les informations complémentaires sur votre navire</h2>
+          <%= simple_form_for @boat do |f| %>
+          <%= f.input :name %>
+          <%= f.input :address %>
+          <%= f.input :city %>
+          <%= f.input :capacity %>
+          <%= f.input :model %>
+          <%= f.input :gender, collection: Boat::GENDER, selected: 1 %>
+          <%= f.input :price %>
+          <%= f.input :description %>
+          <%= f.input :photos, as: :attachinary %>
+          <%= f.submit "Submit", class: "btn btn-default" %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
