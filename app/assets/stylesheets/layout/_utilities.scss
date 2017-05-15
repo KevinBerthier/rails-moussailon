@@ -18,17 +18,29 @@
   padding-bottom: 10px;
 }
 .padded-sides {
+  padding-left: 100px;
+  padding-right: 100px;
+}
+.padded-sides-sm {
   padding-left: 40px;
   padding-right: 40px;
+}
+.padded-top {
+  padding-top: 20px;
 }
 
 // Police Text
 .upcase {
   text-transform: uppercase;
 }
-.txt-sl {
+
+.txt-sm {
   font-size: 12px;
 }
+.txt-description {
+  font-size: 16px;
+}
+
 .txt-md {
   font-size: 20px;
 }
@@ -37,9 +49,6 @@
 }
 .txt-lg {
   font-size: 46px;
-}
-.txt-description {
-  font-size: 16px;
 }
 .txt-light {
   font-weight: 300;

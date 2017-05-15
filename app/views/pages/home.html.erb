@@ -1,29 +1,26 @@
-<p>MOUSSAILLON</p>
-<p>Louez votre bateau</p>
-<p>& larguez les amarres</p>
-<form action="/boats" method="get" class="form-inline text-center padded">
-  <div class="form-group">
-    <label class="sr-only" for="inlineFormInput">City</label>
-    <input type="text" class="form-control" id="inlineFormInput" placeholder="Saint Tropez" name="city">
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_url "home-background.jpg" %>');">
+  <div class="banner-content">
+    <h1 class="txt-blue">MOUSSAILLON</h1>
+    <h2>Louez votre bateau</h2>
+    <h2>& larguez les amarres</h2>
+
+    <form action="/boats" method="get" class="form-inline text-center padded">
+      <div class="form-group">
+        <label class="sr-only" for="inlineFormInput">City</label>
+        <input class="form-control" type="text" id="inlineFormInput" placeholder="Saint Tropez" name="city">
+      </div>
+
+      <div class="form-group">
+        <label for="checkin" class="sr-only">Checkin</label>
+        <input class="form-control" type="date" id="checkin" name="date_check_in"value="<%= Date.today %>">
+      </div>
+
+      <div class="form-group">
+        <label for="checkout" class="sr-only">Checkout</label>
+        <input class="form-control" type="date" id="checkout" name="date_check_out" value="<%= Date.today + 7 %>">
+      </div>
+      <button type="submit" class="btn btn-blue">A l'abordage !</button>
+    </form>
+
   </div>
-
-  <div class="form-group">
-    <label for="checkin" class="sr-only">Checkin</label>
-    <input class="form-control" type="date" value="<%= Date.today %>" id="checkin" name="date_check_in">
-  </div>
-
-  <div class="form-group">
-    <label for="checkout" class="sr-only">Checkout</label>
-    <input class="form-control" type="date" value="<%= Date.today + 7 %>" id="checkout" name="date_check_out">
-  </div>
-
-
-    <button type="submit" class="btn btn-blue">A l'abordage !</button>
-
-</form>
-
-
-<p>A voile</p>
-
-
-<p>A moteur</p>
+</div>
