@@ -6,7 +6,7 @@
 <h2>Date de réservation</h2>
 <p>Prise en main : <%= @booking.date_check_in %></p>
 <p>Retour : <%= @booking.date_check_out %></p>
-<p>Nombre de jours : <%= @booking.date_check_out - @booking.date_check_in + 1 %></p>
+<p>Durée : <%= d = (@booking.date_check_out - @booking.date_check_in + 1).to_i %> <%= d == 1 ? "jour" : "jours"  %></p>
 </div>
 
 <!-- info bateau -->

@@ -1,13 +1,30 @@
-<h2>Mon Profil</h2>
+<h2>Bonjour <%=  @user.first_name %>!</h2>
+
+<div>
+<% if current_user.photo? %>
+  <%= cl_image_tag current_user.photo.path, width: 300, height: 300, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+<% else %>
+  <%= image_tag "http://placehold.it/300x300", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+<% end %>
 <p><%= @user.first_name %></p>
 <p><%= @user.last_name %></p>
-<p><%= @user.description %></p>
+<%= link_to "Editer votre profil", edit_profile_path, class: "btn"  %>
+</div>
 
+<div>
 <h2>Mes Bateaux</h2>
 <% @user.boats.all.each do |boat| %>
-  <p><%= boat.name %> <%= boat.description %>  </p>
-  <p> Price: <%= boat.price %> €</p>
+  <% if boat.photos? %>
+    <% cl_image_tag boat.photos.first.path, height: 300, crop: :fill %>
+  <% else %>
+    <% image_tag 'boat1.jpg' %>
+  <% end %>
+  <p>
+  <%= boat.name %>  Price: <%= boat.price %> €  <%= link_to "Editer votre bateau", edit_boat_path(boat) %>
+  </p>
+
 <% end %>
+</div>
 
 <h2>Reservation de mes bateaux  (pas fonctionnel)</h2>
 <% @user.bookings.all.each do |booking| %>
