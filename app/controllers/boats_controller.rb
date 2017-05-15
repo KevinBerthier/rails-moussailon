@@ -13,6 +13,7 @@ class BoatsController < ApplicationController
 
   # GET /boats/1
   def show
+    @booking = Booking.new
   end
 
   # GET /boats/new
@@ -30,7 +31,7 @@ class BoatsController < ApplicationController
     @boat.user = current_user
 
     if @boat.save
-      redirect_to @boat, notice: 'boat was successfully created.'
+      redirect_to @boat, notice: 'Votre bateau a bien été enregistré.'
     else
       render :new
     end
@@ -39,7 +40,7 @@ class BoatsController < ApplicationController
   # PATCH/PUT /boats/1
   def update
     if @boat.update(boat_params)
-      redirect_to @boat, notice: 'boat was successfully updated.'
+      redirect_to @boat, notice: 'Votre bateau a bien été modifié.'
     else
       render :edit
     end
@@ -48,7 +49,7 @@ class BoatsController < ApplicationController
   # DELETE /boats/1
   def destroy
     @boat.destroy
-    redirect_to boats_url, notice: 'boat was successfully destroyed.'
+    redirect_to boats_url, notice: 'Votre bateau a bien été retiré'
   end
 
   private

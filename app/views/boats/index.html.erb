@@ -1,6 +1,6 @@
 <form action="/boats" method="get" class="form-inline text-center padded">
   <div class="form-group">
-    <label class="sr-only" for="inlineFormInput">Name</label>
+    <label class="sr-only" for="inlineFormInput">City</label>
     <input type="text" class="form-control" id="inlineFormInput" placeholder="Saint Tropez" name="city" value="<%= params[:city] %>">
   </div>
 
@@ -25,7 +25,7 @@
     <% end %>
 
     <div class="col-xs-12 col-sm-4 padded">
-      <%= link_to boat_path(boat) do %>
+      <%= link_to boat_path(boat, request.query_parameters) do %>
         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
          url('<%= card_img_path %>')">
           <div class="card-category"><%= boat.price %> €</div>

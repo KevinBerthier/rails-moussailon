@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:dashboard, :edit, :update, :destroy]
 
 
   # GET /users/1
-  def show
+  def dashboard
+
   end
 
   # GET /users/1/edit
@@ -14,7 +15,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   def update
     if @user.update(user_params)
-      redirect_to root_path, notice: 'user was successfully updated.'
+      redirect_to root_path, notice: 'Votre profil a bien été modifié'
     else
       render :edit
     end
@@ -23,7 +24,7 @@ class UsersController < ApplicationController
   # DELETE /users/1
   def destroy
     @user.destroy
-    redirect_to users_url, notice: 'user was successfully destroyed.'
+    redirect_to users_url, notice: 'Votre profil a bien été supprimé'
   end
 
   private

@@ -44,7 +44,7 @@
   font-size: 14px;
 }
 .navbar-wagon-link:hover {
-  color: $yellow;
+  color: $dark-blue;
   text-decoration: none;
   transition: all 0.15s ease;
 }
@@ -65,7 +65,7 @@
 }
 .navbar-wagon-dropdown-menu li > a:hover {
   background: transparent !important;
-  color: $yellow !important;
+  color: $dark-blue !important;
 }
 .navbar-wagon-dropdown-menu:before {
   content: ' ';
