@@ -1,9 +1,9 @@
-<div class="container">
-  <h2 class="txt-heavy txt-blue">Bonjour <%=  @user.first_name %>!</h2>
+<div class="container padded-sides">
 
+  <h2 class="txt-heavy txt-blue padded-md">Bonjour <%=  @user.first_name %> !</h2>
 
   <div class="row">
-    <div class="col-offset-12 col-sm-2">
+    <div class="col-offset-12 col-sm-3 text-center">
       <% if current_user.photo? %>
         <%= cl_image_tag current_user.photo.path, width: 300, height: 300, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
       <% else %>
@@ -12,32 +12,65 @@
       <p class="txt-md txt-light text-center"><%= @user.first_name %></p>
       <p class="txt-md txt-light text-center"><%= @user.last_name %></p>
       <%= link_to "Editez votre profil", edit_profile_path, class: "btn btn-simple" %>
-      </div>
     </div>
-  <div>
-  <h2 class="txt-md txt-heavy">Mon annonce</h2>
-  <% @user.boats.all.each do |boat| %>
-    <% if boat.photos? %>
-      <% cl_image_tag boat.photos.first.path, height: 300, crop: :fill %>
-    <% else %>
-      <% image_tag 'boat1.jpg' %>
-    <% end %>
-    <p>
-    <%= boat.name %>  Price: <%= boat.price %> €  <%= link_to "Editer votre bateau", edit_boat_path(boat) %>
-    </p>
 
-  <% end %>
+    <div class="col-offset-12 col-sm-8">
+      <h2 class="txt-md txt-heavy">notifications</h2>
+      <p class="txt-light">Vérifiez votre pièce d'identité</p>
+      <p class="txt-light">Notez votre dernière location</p>
+      <hr>
+
+      <h2 class="txt-md txt-heavy padded-top">messages</h2>
+      <p class="txt-light">Bonjour, je souhaiterais louer votre bâteau, c'est possible d'avoir un prix ? Merci</p>
+    </div>
   </div>
 
-  <h2 class="txt-md txt-heavy">Reservation de mes bateaux  (pas fonctionnel)</h2>
-  <% @user.bookings.all.each do |booking| %>
-    <p><%= booking.date_check_in %> <%= booking.date_check_out %> </p>
-    <p> Prix: <%= booking.total_price %> €</p>
-  <% end %>
+  <div class="padded-top">
+    <hr style="height:1px;" />
+  </div>
 
-  <h2 class="txt-md txt-heavy">Mes reservations de bateaux</h2>
-  <% @user.bookings.all.each do |booking| %>
-    <p><%= booking.date_check_in %> <%= booking.date_check_out %> </p>
-    <p> Prix: <%= booking.total_price %> €</p>
-  <% end %>
-<div>
+
+<!-- Tableau de gestion des réservations -->
+
+  <div class="row">
+
+    <div class="col-xs-12 col-sm-6 text-center">
+    <h2 class="txt-md txt-heavy">Gestion de mes bâteaux</h2>
+      <% @user.boats.all.each do |boat| %>
+        <div class="card-white margin-top">
+        <% card_img_path = %>
+          <% if boat.photos? %>
+            <% cl_image_path boat.photos.first.path %>
+          <% else %>
+            <% image_path 'boat1.jpg' %>
+          <% end %>
+
+          <%= cl_image_tag card_img_path, height: 150, crop: :fill %>
+          <p class="txt-bold"><%= boat.name %> </p>
+          <p class="txt-light">Note moyenne</p>
+          <p class="txt-light">Price : <%= boat.price %> €/j </p>
+          <p><%= link_to "Editer votre bateau", edit_boat_path(boat) %></p>
+          <p class="txt-light">Gestion des réservations</p>
+        </div>
+      <% end %>
+
+    <!-- <% @user.bookings.all.each do |booking| %>
+      <p><%= booking.date_check_in %> <%= booking.date_check_out %> </p>
+      <p> Prix: <%= booking.total_price %> €</p>
+    <% end %> -->
+  </div>
+
+
+  <div class="col-xs-12 col-sm-6 text-center">
+    <h2 class="txt-md txt-heavy">Réservations d'autres bateaux</h2>
+    <% if @user.bookings %>
+      <% @user.bookings.all.each do |booking| %>
+        <p><%= booking.date_check_in %> <%= booking.date_check_out %> </p>
+        <p> Prix: <%= booking.total_price %> €</p>
+      <% end %>
+    <% else %>
+      <p class="txt-light">Vous n'avez pas encore fait de réservation</p>
+    <% end %>
+  </div>
+
+</div>
