@@ -12,12 +12,13 @@
   box-shadow: 0px 1px 1px 0px rgba(74,74,74, 0.1);
 }
 
-.btn-default:hover{
+.btn-default:hover {
     color: white;
     background: #356C9F;
     opacity: 0.7;
+}
 
-.btn-simple{
+.btn-simple {
   border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 15px 25px;
   color: $gray;
