@@ -14,11 +14,11 @@
         <h2 class="txt-mmd padded-md">Dates de réservation</h2>
         <div class="row">
            <div class="col-xs-6 col-md-6">
-             <p class="txt-sl">Prise en main</p>
+             <p class="txt-sm">Prise en main</p>
              <p class="txt-bold"><%= @booking.date_check_in %></p>
            </div>
            <div class="col-xs-6 col-md-6">
-             <p class="txt-sl">Retour</p>
+             <p class="txt-sm">Retour</p>
              <p class="txt-bold"><%= @booking.date_check_out %></p>
            </div>
         </div>
@@ -42,6 +42,7 @@
              <p class="txt-description txt-bold"><%= @boat.model = "" ? "-" : @boat.model %></p>
              <p class="txt-description txt-bold"><%= @boat.city %></p>
              <p class="txt-description txt-bold"><%= @boat.user.first_name + " " + @boat.user.last_name %></p>
+             <p class="txt-description txt-bold"><%= @boat.user.phone = "" ? "-" : @boat.user.phone %></p>
            </div>
         </div>
         <hr style="height:1px; width: 450px;" />
