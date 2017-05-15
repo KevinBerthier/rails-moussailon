@@ -1,41 +1,39 @@
+<!-- Photo du bâteau -->
+
+<% if @boat.photos? %>
+  <% bg_img = cl_image_path @boat.photos.first.path, height: 400, crop: :fill %>
+<% else %>
+  <% gb_img = image_path 'boat1.jpg' %>
+<% end %>
+
+<div class="card-show" style= "background-image: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%), url('<%= bg_img %>'); ">
+  <p class="card-show-title txt-white txt-black txt-lg"><%= @boat.name %></p>
+  <p class="card-show-description txt-white txt-regular txt-description"><%= @boat.model %></p>
+</div>
+
 <div class="container padded-sides">
-
-  <!-- Photo du bâteau -->
-
-  <% if @boat.photos? %>
-    <% image = cl_image_path @boat.photos.first.path, height: 300, crop: :fill %>
-  <% else %>
-    <% image = image_path 'boat1.jpg' %>
-  <% end %>
-
-  <div class="card-show" style= "background-image: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%), url('<%= image %>'); ">
-    <p class="card-show-title txt-white txt-black txt-lg"><%= @boat.name %></p>
-    <p class="card-show-description txt-white txt-regular txt-description"><%= @boat.model %></p>
-  </div>
-
-
   <!-- Description moussaillon -->
 
   <div class="row">
     <div class="col-offset-2 col-sm-6">
-      <h2 class=" txt-md txt-heavy"><%= @boat.user.first_name%> <%= @boat.user.last_name %></h2>
-      <p class="txt-md txt-bold txt-blue txt-height-sm upcase">moussaillon</p>
+      <h2 class=" txt-md txt-heavy padded-left"><%= @boat.user.first_name%> <%= @boat.user.last_name %></h2>
+      <p class="txt-md txt-bold txt-blue txt-height-sm upcase padded-left">moussaillon</p>
 
       <!-- <hr style="height:1px;" /> -->
 
-      <p class="txt-description txt-light padded-sm">
+      <p class="txt-description txt-light padded-sm padded-left">
         <%= @boat.user.description %>
       </p>
     </div>
 
-    <div class="col-offset-2 col-sm-6 text-center padded-top">
+    <div class="col-offset-2 col-sm-6 text-center padded-top-neg">
       <% if @boat.user.photo? %>
         <% image = cl_image_path @boat.user.photo.path %>
       <% else %>
         <% image = image_path 'captain.png' %>
       <% end %>
 
-      <%= cl_image_tag image, height: 150, width: 150, crop: :fill, class: 'avatar avatar-bordered' %>
+      <%= cl_image_tag image, height: 150, width: 150, crop: :fill, class: 'avatar' %>
     </div>
   </div>
 
@@ -46,7 +44,7 @@
 
   <!-- Description du bâteau -->
 
-    <h2 class="txt-md txt-heavy">description du bâteau</h2>
+    <h2 class="txt-md txt-heavy padded-left">description du bâteau</h2>
 
   <div class="padded-sides-sm">
     <div class="row padded-lg">
@@ -80,20 +78,21 @@
 
 
   <!-- Formulaire -->
-  <div class="padded-top padded-md">
+  <div class="padded-top padded-md row">
 
-    <form action="<%= new_boat_booking_path(@boat) %>" method="GET" class="form-inline text-center padded">
+    <form action="<%= new_boat_booking_path(@boat) %>" method="GET" class="col-sm-4 col-sm-offset-4">
+
       <div class="form-group">
-        <label for="checkin" class="sr-only">Checkin</label>
-        <input class="form-control" type="date" value="<%= params[:date_check_in] %>" id="checkin" name="date_check_in">
+          <label for="checkin" class="sr-only">Checkin</label>
+          <input class="form-control" type="date" value="<%= params[:date_check_in] %>" id="checkin" name="date_check_in">
       </div>
 
       <div class="form-group">
-        <label for="checkout" class="sr-only">Checkout</label>
-        <input class="form-control" type="date" value="<%= params[:date_check_out] %>" id="checkout" name="date_check_out">
+          <label for="checkout" class="sr-only">Checkout</label>
+          <input class="form-control" type="date" value="<%= params[:date_check_out] %>" id="checkout" name="date_check_out">
       </div>
 
-      <button type="submit" class="btn btn-primary">RÉSERVER</button>
+      <button type="submit" class="btn btn-primary btn-lg btn-block">RÉSERVER</button>
     </form>
   </div>
 
@@ -105,7 +104,7 @@
   <!-- Commentaires / Reviews -->
 
   <div>
-    <h2 class="txt-md txt-heavy">commentaires</h2>
+    <h2 class="txt-md txt-heavy padded-left">commentaires</h2>
 
     <div class="row">
       <div class="col-xs-12 col-sm-4">
