@@ -21,7 +21,7 @@ puts 'Creating boats...'
 boats_attributes = [
   {
     name:         "Météore",
-    address:      "Vieux Port",
+    address:      "Port autonome de Marseille, Marseille",
     city:         "Marseille",
     user:         user,
     price:        150,
@@ -32,7 +32,7 @@ boats_attributes = [
   },
   {
     name:         "La licorne",
-    address:      "Port de Malmousque",
+    address:      "Rue Malmousque, Marseille",
     city:         "Marseille",
     user:         user,
     price:        200,
@@ -43,8 +43,8 @@ boats_attributes = [
   },
   {
     name:         "Espadon",
-    address:      "Port de plaisance",
-    city:         "Toulon",
+    address:      "14 rue Pythéas, Marseille",
+    city:         "Marseille",
     user:         user,
     price:        50,
     capacity:     2,

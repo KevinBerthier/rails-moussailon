@@ -1,5 +1,4 @@
 <!-- Photo du bâteau -->
-
 <% if @boat.photos? %>
   <% bg_img = cl_image_path @boat.photos.first.path, height: 400, crop: :fill %>
 <% else %>
@@ -94,14 +93,40 @@
       <button type="submit" class="btn btn-default btn-block">RÉSERVER</button>
     </form>
   </div>
+</div>
 
-  <div class="padded-top">
-    <hr style="height:1px;" />
+  <!-- dynamic map geocoder -->
+<div class="container padded-sides">
+  <!-- Description moussaillon -->
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-12">
+      <div id="map" style="width: 100%; height: 600px;"></div>
+
+        <% content_for(:after_js) do %>
+          <script>
+            $(document).ready(function() {
+              var handler = Gmaps.build('Google');
+              handler.buildMap({ internal: { id: 'map' } }, function() {
+                markers = handler.addMarkers(<%= raw @hash.to_json %>);
+                handler.bounds.extendWith(markers);
+                handler.fitMapToBounds();
+                if (markers.length == 0) {
+                  handler.getMap().setZoom(2);
+                } else if (markers.length == 1) {
+                  handler.getMap().setZoom(14);
+                }
+              });
+            });
+          </script>
+        <% end %>
+      </div>
+    </div>
   </div>
-
+</div>
 
   <!-- Commentaires / Reviews -->
-
+<div class="container padded-sides">
   <div class="margin-bottom-md">
     <h2 class="txt-md txt-heavy padded-left padded-bottom-sm">commentaires</h2>
 
