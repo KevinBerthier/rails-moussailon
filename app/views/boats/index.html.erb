@@ -3,30 +3,24 @@
   <!-- Formulaire de recherche par dates -->
 
   <div class="padded-md">
-    <%= form_tag boats_path, method: "get", class: "form-inline text-center padded" do %>
-      <div class="form-group">
+    <%= form_tag boats_path, method: "get", class: " text-center padded" do %>
+      <div class="form-group row form-inline">
         <%= text_field_tag :city, params[:city], class: "form-control", placeholder: "Saint Tropez" %>
-      </div>
 
-      <div class="form-group">
         <label for="checkin" class="sr-only">Checkin</label>
         <input class="form-control" type="date" value="<%= params[:date_check_in] %>" id="checkin" name="date_check_in">
-      </div>
 
-      <div class="form-group">
         <label for="checkout" class="sr-only">Checkout</label>
         <input class="form-control" type="date" value="<%= params[:date_check_out] %>" id="checkout" name="date_check_out">
       </div>
 
-      <div class="form-group">
+      <div class="form-group row form-inline">
         <%= select_tag :gender, options_for_select(Boat::GENDER, selected: params[:gender]), class: "form-control" %>
-      </div>
 
-      <div class="form-group">
         <%= text_field_tag :capacity, params[:capacity], class: "form-control", placeholder: "nb personnes" %>
-      </div>
 
         <button type="submit" class="btn btn-default">Affiner la recherche</button>
+      </div>
     <% end %>
   </div>
 
