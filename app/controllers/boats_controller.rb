@@ -1,5 +1,5 @@
 class BoatsController < ApplicationController
-  before_action :set_boat, only: [:show, :edit, :update, :destroy]
+  before_action :set_boat, only: [:edit, :update, :destroy]
 
   # GET /boats
   def index
@@ -19,8 +19,13 @@ class BoatsController < ApplicationController
 
   # GET /boats/1
   def show
-    @boat_coordinates = { lat: @boat.latitude, lng: @boat.longitude }
     @booking = Booking.new
+    # geocoder script
+    @boat = Boat.find(params[:id])
+    @hash = Gmaps4rails.build_markers(@boat) do |boat, marker|
+      marker.lat boat.latitude
+      marker.lng boat.longitude
+    end
   end
 
   # GET /boats/new
