@@ -13,6 +13,7 @@ class BoatsController < ApplicationController
 
   # GET /boats/1
   def show
+    @boat_coordinates = { lat: @boat.latitude, lng: @boat.longitude }
     @booking = Booking.new
   end
 

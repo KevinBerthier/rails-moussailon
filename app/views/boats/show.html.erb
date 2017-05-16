@@ -1,4 +1,13 @@
 <!-- Photo du bâteau -->
+<% content_for(:after_js) do %>
+  <script>
+    $(document).ready(function() {
+      var coord = <%= raw @boat_coordinates.to_json %>;
+      alert('Boat coordinates are ' + coord.lat + ', ' + coord.lng);
+    });
+  </script>
+<% end %>
+
 
 <% if @boat.photos? %>
   <% bg_img = cl_image_path @boat.photos.first.path, height: 400, crop: :fill %>
