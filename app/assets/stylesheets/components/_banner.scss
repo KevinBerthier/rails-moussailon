@@ -29,3 +29,12 @@
   height: 44px;
 }
 
+.banner-form {
+  height: calc(100vh - 70px);
+  width: 100vw;
+  background-size: cover !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+

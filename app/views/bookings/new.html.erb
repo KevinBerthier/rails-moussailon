@@ -39,15 +39,21 @@
            </div>
            <div class="col-xs-6 col-md-6">
              <p class="txt-description txt-bold"><%= @boat.name %></p>
-             <p class="txt-description txt-bold"><%= @boat.model = "" ? "-" : @boat.model %></p>
+             <p class="txt-description txt-bold">
+               <% if @boat.model != nil %>
+               <%= @boat.model %>
+                <% else %>
+               <%= "-" %>
+                <% end %>
+             </p>
              <p class="txt-description txt-bold"><%= @boat.city %></p>
              <p class="txt-description txt-bold"><%= @boat.user.first_name + " " + @boat.user.last_name %></p>
              <p class="txt-description txt-bold">
-             <% if @boat.user.phone != nil %>
-             <%= @boat.user.phone %>
-             <% else %>
-             <%= "-" %>
-             <% end %>
+               <% if @boat.user.phone != nil %>
+                <%= @boat.user.phone %>
+               <% else %>
+                <%= "-" %>
+               <% end %>
              </p>
            </div>
         </div>
@@ -74,7 +80,7 @@
 
       <div class="col-xs-12 col-md-6">
       <!-- photo -->
-       <div class="margin-top text-center" id="image-boat" >
+       <div class="margin-top-photo text-center" id="image-boat" >
          <%= cl_image_tag @boat.photos.first.path, height: 696, width: 550, crop: :fill %>
        </div>
       </div>
@@ -91,7 +97,7 @@
          <%= simple_form_for [@boat, @booking] do |f| %>
          <%= f.input :date_check_in, as: :hidden %>
          <%= f.input :date_check_out, as: :hidden  %>
-         <%= f.submit "Confirmer", class: "btn btn-default margin-btn" %>
+         <%= f.submit "Confirmer", class: "btn btn-default margin-btn-conf" %>
          <% end %>
        </div>
       </div>
