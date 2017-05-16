@@ -1,4 +1,5 @@
 <div class="container padded-sides">
+    <h2 class="txt-heavy txt-blue padded-md">Bonjour <%=  @user.first_name %> !</h2>
 
   <h2 class="txt-heavy txt-blue padded-md padded-left">Bonjour <%=  @user.first_name %> !</h2>
 
@@ -20,37 +21,41 @@
       <p class="txt-light">Notez votre dernière location</p>
       <hr>
 
-      <h2 class="txt-md txt-heavy padded-top">messages</h2>
-      <p class="txt-light">Bonjour, je souhaiterais louer votre bâteau, c'est possible d'avoir un prix ? Merci</p>
+        <h2 class="txt-md txt-heavy padded-top">messages</h2>
+        <p class="txt-light">Bonjour, je souhaiterais louer votre bâteau, c'est possible d'avoir un prix ? Merci</p>
     </div>
   </div>
 
   <div class="padded-top">
     <hr style="height:1px;" />
   </div>
+</div>
 
+<div class="tab">
+  <ul class="tabs">
+    <li><a href="#">Gestion de ma flotte</a></li>
+    <li><a href="#">Ils ont réservé</a></li>
+    <li><a href="#">Mes sorties en mer</a></li>
+  </ul>
 
-  <!-- Tableau de gestion des bateaux -->
-  <div class="row">
-
-    <div class="text-center">
-    <h2 class="txt-md txt-heavy">Gestion de ma flotte</h2>
+  <!-- Gestion de ma flotte -->
+  <div class="tab_content padded-sides-sm">
+    <div class="class tabs_item">
       <% if @user.boats %>
         <% @user.boats.all.each do |boat| %>
-          <div class="col-sm-6 card-white margin-top">
-          <% card_img_path = %>
+          <div class="card-white margin-top-sm">
+            <% card_img_path = %>
             <% if boat.photos? %>
               <% cl_image_path boat.photos.first.path %>
             <% else %>
               <% image_path 'boat1.jpg' %>
             <% end %>
 
-            <%= cl_image_tag card_img_path, height: 150, crop: :fill %>
-            <p class="txt-bold"><%= boat.name %> </p>
+            <%= cl_image_tag card_img_path, height: 120, crop: :fill %>
+            <p class="txt-bold txt-md"><%= boat.name %> </p>
             <p class="txt-light">Note moyenne</p>
             <p class="txt-light">Price : <%= boat.price %> €/j </p>
-            <p><%= link_to "Modifier votre bateau", edit_boat_path(boat) %></p>
-            <p class="txt-light">Gestion des réservations</p>
+            <p class="card-white-edit txt-regular"><%= link_to "Modifier votre bateau", edit_boat_path(boat) %></p>
           </div>
         <% end %>
       <% else %>
@@ -58,14 +63,9 @@
         <%= link_to "Enregistrez votre bateau", new_boat_path, class: "btn btn-default" %>
       <% end %>
     </div>
-  </div>
 
-
-  <!-- Tableau de gestion des bateaux -->
-  <div class="row">
-
-    <div class="text-center">
-    <h2 class="txt-md txt-heavy">Ils ont reservé</h2>
+    <!-- Ils ont réservé -->
+    <div class="class tabs_item">
       <% if @user.boats %>
         <% @user.boats.all.each do |boat| %>
           <% boat.bookings.each do |booking| %>
@@ -86,13 +86,10 @@
         <p class="txt-light">Votre flotte n'a pas de reservation</p>
       <% end %>
     </div>
-  </div>
 
 
-  <!-- Tableau de gestion des reservations -->
-  <div class="row">
-    <div class="text-center">
-      <h2 class="txt-md txt-heavy">Mes reservations</h2>
+    <!-- Mes sorties en mer -->
+    <div class="class tabs_item">
       <% if @user.bookings %>
         <% @user.bookings.all.each do |booking| %>
           <div class="col-sm-6 card-white margin">
@@ -116,5 +113,12 @@
         <%= link_to "Faire une virée", boats_path, class: "btn btn-default" %>
       <% end %>
     </div>
+
   </div>
 </div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="javascripts/tabs.js"></script>
+
+

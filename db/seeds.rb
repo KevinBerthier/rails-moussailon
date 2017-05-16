@@ -20,33 +20,35 @@ user.save
 puts 'Creating boats...'
 boats_attributes = [
   {
-    name:         "Grand voilier",
+    name:         "Météore",
     address:      "Vieux Port",
     city:         "Marseille",
     user:         user,
     price:        150,
     capacity:     6,
-
+    model:        "Goélette franche",
     description:  "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur dolorum adipisci rerum ratione eius nobis eveniet officiis at animi. Rem libero eum recusandae sit corporis voluptas, eos consectetur possimus suscipit!
     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse minima odit, nostrum tenetur maiores sint odio aspernatur. Enim repudiandae dignissimos totam accusantium voluptates maiores earum quia. Non nemo explicabo dignissimos!"
   },
   {
-    name:         "Yacht",
+    name:         "La licorne",
     address:      "Port de Malmousque",
     city:         "Marseille",
     user:         user,
     price:        200,
     capacity:     4,
+    model:        "Deux-mâts",
     description:  "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur dolorum adipisci rerum ratione eius nobis eveniet officiis at animi. Rem libero eum recusandae sit corporis voluptas, eos consectetur possimus suscipit!
     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse minima odit, nostrum tenetur maiores sint odio aspernatur. Enim repudiandae dignissimos totam accusantium voluptates maiores earum quia. Non nemo explicabo dignissimos!"
   },
   {
-    name:         "Grand voilier",
+    name:         "Espadon",
     address:      "Port de plaisance",
     city:         "Toulon",
     user:         user,
     price:        50,
     capacity:     2,
+    model:        "Dundee",
     description:  "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur dolorum adipisci rerum ratione eius nobis eveniet officiis at animi. Rem libero eum recusandae sit corporis voluptas, eos consectetur possimus suscipit!
     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse minima odit, nostrum tenetur maiores sint odio aspernatur. Enim repudiandae dignissimos totam accusantium voluptates maiores earum quia. Non nemo explicabo dignissimos!"
   }
