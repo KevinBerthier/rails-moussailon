@@ -7,8 +7,10 @@
     <div class="col-sm-4 text-center">
       <% if current_user.photo? %>
         <%= cl_image_tag current_user.photo.path, width: 100, height: 100, crop: :fill, class: "avatar avatar-large", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+      <% elsif current_user.facebook_picture_url %>
+        <%= image_tag current_user.facebook_picture_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
       <% else %>
-        <%= image_tag "http://placehold.it/300x300", class: "avatar avatar-large", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        <%= image_tag "captain.png", class: "avatar avatar-large", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
       <% end %>
       <p class="txt-md txt-light text-center padded-top"><%= @user.first_name %></p>
       <p class="txt-md txt-light text-center"><%= @user.last_name %></p>
