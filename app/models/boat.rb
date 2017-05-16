@@ -8,4 +8,9 @@ class Boat < ApplicationRecord
   validates :price, numericality: true
   validates :capacity, numericality: true
   has_attachments :photos, maximum: 3
+
+  include PgSearch
+  pg_search_scope :search_city, against: [ :city ]
+  pg_search_scope :search_capacity, against: [ :capacity ]
+  pg_search_scope :search_gender, against: [ :gender ]
 end

@@ -3,12 +3,13 @@ class BoatsController < ApplicationController
 
   # GET /boats
   def index
-    if params[:city] != ""
-      params[:city].capitalize!
-      @boats = Boat.where(city: params[:city])
-    else
-      @boats = Boat.all
-    end
+    # if params[:city] != ""
+    #   params[:city].capitalize!
+    #   @boats = Boat.where(city: params[:city])
+    # else
+    #   @boats = Boat.all
+    # end
+    @boats = Boat.search_city(params[:city])
   end
 
   # GET /boats/1
