@@ -1,4 +1,4 @@
-<div class="banner-form">
+<div class="banner-form" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_url "home-background.jpg" %>');">
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-sm-offset-3">
@@ -12,11 +12,11 @@
               <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
             </div>
 
-            <div class="form-actions">
+            <div class="form-actions text-center">
               <%= f.button :submit, "Log in" %>
             </div>
           <% end %>
-          <div class="padded">
+          <div class="padded text-center">
             <%= render "devise/shared/links" %>
           </div>
         </div>

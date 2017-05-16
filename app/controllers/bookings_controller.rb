@@ -7,12 +7,18 @@ class BookingsController < ApplicationController
   end
 
   def new
-    @booking = Booking.new
-    @boat = Boat.find(params[:boat_id])
-    @booking.date_check_in = params[:date_check_in].to_date
-    @booking.date_check_out = params[:date_check_out].to_date
-    @booking.total_price =
-    @boat.price * (@booking.date_check_out - @booking.date_check_in + 1)
+      @booking = Booking.new
+      @boat = Boat.find(params[:boat_id])
+    if params[:date_check_in] == "" || params[:date_check_out] == ""
+      redirect_to boat_path(@boat, request.query_parameters)
+    elsif current_user
+      @booking.date_check_in = params[:date_check_in].to_date
+      @booking.date_check_out = params[:date_check_out].to_date
+      @booking.total_price =
+      @boat.price * (@booking.date_check_out - @booking.date_check_in + 1)
+    else
+      redirect_to new_user_registration_path, notice: 'Veuillez vous connecter avant de faire votre réservation'
+    end
   end
 
   def create
@@ -25,7 +31,7 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to dashboard_path, notice: 'Votre reservation a bien été enregistrée.'
     else
-      render :new
+
     end
   end
 
