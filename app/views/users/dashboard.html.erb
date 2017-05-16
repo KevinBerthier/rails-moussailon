@@ -45,12 +45,12 @@
           <div class="card-white-fix margin-top-sm">
             <% card_img_path = %>
             <% if boat.photos? %>
-              <% cl_image_path boat.photos.first.path %>
+              <% cl_image_path boat.photos.first.path, width: 180, height: 120, crop: :fill %>
             <% else %>
               <% image_path 'boat1.jpg' %>
             <% end %>
 
-            <%= cl_image_tag card_img_path, height: 120, crop: :fill %>
+            <%= cl_image_tag card_img_path  %>
             <p class="txt-bold txt-md"><%= boat.name %> </p>
             <p class="txt-light">Note moyenne</p>
             <p class="txt-light">Price : <%= boat.price %> €/j </p>
