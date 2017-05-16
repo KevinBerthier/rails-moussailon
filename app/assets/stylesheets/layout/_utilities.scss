@@ -25,13 +25,25 @@
   padding-left: 40px;
   padding-right: 40px;
 }
+
+
+.padded-sides-sl {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 .padded-sides-md {
   padding-left: 60px;
   padding-right: 60px;
 }
+
 .padded-top {
   padding-top: 20px;
 }
+.padded-bottom-sm {
+  padding-bottom: 10px;
+}
+
 .padded-top-neg {
   top: -30px;
 }
@@ -46,15 +58,22 @@
 .margin-top {
   margin-top: 5px;
 }
-
 .margin-btn {
   margin: 45px;
 }
-
 .margin-top-sm {
   margin-top: 10px;
 }
-
+.margin-top-photo {
+  margin-top: 45px;
+}
+.margin-btn-conf {
+  margin-top: 40px;
+  margin-bottom: 60px;
+}
+.margin-bottom-md {
+  margin-bottom: 50px;
+}
 
 // Police Text
 .upcase {
