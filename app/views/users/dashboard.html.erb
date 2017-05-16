@@ -1,5 +1,4 @@
-<div class="container padded-sides">
-    <h2 class="txt-heavy txt-blue padded-md">Bonjour <%=  @user.first_name %> !</h2>
+<div class="container padded-sides-lg">
 
   <h2 class="txt-heavy txt-blue padded-md padded-left">Bonjour <%=  @user.first_name %> !</h2>
 
@@ -10,7 +9,7 @@
       <% else %>
         <%= image_tag "http://placehold.it/300x300", class: "avatar avatar-large", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
       <% end %>
-      <p class="txt-md txt-light text-center padded-top"><%= @user.first_name %></p>
+      <div class="txt-md txt-light text-center padded-top"><%= @user.first_name %></div>
       <p class="txt-md txt-light text-center"><%= @user.last_name %></p>
       <%= link_to "Editez votre profil", edit_profile_path, class: "btn btn-simple" %>
     </div>
@@ -25,14 +24,12 @@
         <p class="txt-light">Bonjour, je souhaiterais louer votre bâteau, c'est possible d'avoir un prix ? Merci</p>
     </div>
   </div>
-
-  <div class="padded-top">
-    <hr style="height:1px;" />
-  </div>
 </div>
 
+
+<!-- Tabs -->
 <div class="tab">
-  <ul class="tabs">
+  <ul class="tabs text-center">
     <li><a href="#">Gestion de ma flotte</a></li>
     <li><a href="#">Ils ont réservé</a></li>
     <li><a href="#">Mes sorties en mer</a></li>
@@ -43,7 +40,7 @@
     <div class="class tabs_item">
       <% if @user.boats %>
         <% @user.boats.all.each do |boat| %>
-          <div class="card-white margin-top-sm">
+          <div class="card-white-fix margin-top-sm">
             <% card_img_path = %>
             <% if boat.photos? %>
               <% cl_image_path boat.photos.first.path %>
@@ -55,7 +52,7 @@
             <p class="txt-bold txt-md"><%= boat.name %> </p>
             <p class="txt-light">Note moyenne</p>
             <p class="txt-light">Price : <%= boat.price %> €/j </p>
-            <p class="card-white-edit txt-regular"><%= link_to "Modifier votre bateau", edit_boat_path(boat) %></p>
+            <p class="card-white-edit txt-bold"><%= link_to "Modifier votre bateau", edit_boat_path(boat) %></p>
           </div>
         <% end %>
       <% else %>
@@ -64,12 +61,13 @@
       <% end %>
     </div>
 
+
     <!-- Ils ont réservé -->
     <div class="class tabs_item">
       <% if @user.boats %>
         <% @user.boats.all.each do |boat| %>
           <% boat.bookings.each do |booking| %>
-            <div class="col-sm-12 card-white margin-top">
+            <div class="col-sm-12 card-white-fix margin-top">
               <% user_img_path = %>
                 <% if booking.user.photo? %>
                   <% cl_image_path boat.user.photo.path %>
@@ -77,13 +75,19 @@
                   <% image_path 'captain.png' %>
                 <% end %>
 
-                <%= cl_image_tag user_img_path, height: 50, crop: :fill, class: "avatar" %>
-                <span>Du <%= booking.date_check_in.to_formatted_s(:rfc822) %> au <%= booking.date_check_out.to_formatted_s(:rfc822) %> <%# link_to "détails", boat_booking_path(booking)  %> </span>
+                <%= cl_image_tag user_img_path, height: 120, crop: :fill, class: 'avatar padded-sides-sm' %>
+                <div>
+                  <p class="txt-bold txt-md"><%= boat.name %> </p>
+                  <div>Loué par : <%= booking.user.first_name %> <%= booking.user.last_name %></div>
+                  <div>Réservation : du <%= booking.date_check_in.to_formatted_s(:rfc822) %> au <%= booking.date_check_out.to_formatted_s(:rfc822) %> </div>
+                  <p>Prix total : <%= booking.total_price %> €</p>
+                  <p class="card-white-edit txt-bold"><%# link_to "Détails", boat_booking_path(booking) %></p>
+                </div>
             </div>
           <% end %>
         <% end %>
       <% else %>
-        <p class="txt-light">Votre flotte n'a pas de reservation</p>
+        <p class="txt-light">Votre flotte n'a pas de réservation</p>
       <% end %>
     </div>
 
@@ -92,7 +96,7 @@
     <div class="class tabs_item">
       <% if @user.bookings %>
         <% @user.bookings.all.each do |booking| %>
-          <div class="col-sm-6 card-white margin">
+          <div class="card-white-fix margin-top-sm">
             <% card_img_path = %>
             <% if booking.boat.photos? %>
               <% cl_image_path booking.boat.photos.first.path %>
@@ -100,12 +104,21 @@
               <% image_path 'boat1.jpg' %>
             <% end %>
 
-            <%= cl_image_tag card_img_path, height: 150, crop: :fill %>
-            <p class="txt-bold"><%= booking.boat.name %> </p>
+            <%= cl_image_tag card_img_path, height: 120, crop: :fill %>
+            <p class="txt-bold txt-md"><%= booking.boat.name %> </p>
             <p>Du <%= booking.date_check_in.to_formatted_s(:rfc822) %> au <%= booking.date_check_out.to_formatted_s(:rfc822) %></p>
             <p class="txt-light">Prix : <%= booking.total_price %> € </p>
-            <p><%= link_to "Modifier", edit_boat_booking_path(booking.boat,booking) %></p>
+            <p class="card-white-edit txt-bold"><%= link_to "Modifier", edit_boat_booking_path(booking.boat,booking) %></p>
             <%# link_to "détails", boat_booking_path(booking)  %>
+
+            <% if booking.boat.user.photo? %>
+              <% avatar_owner = cl_image_path booking.boat.user.photo.path %>
+            <% else %>
+              <% avatar_owner = image_path 'captain.png' %>
+            <% end %>
+
+            <div class="card-white-avatar"> <%= cl_image_tag avatar_owner, height: 40, width: 40, crop: :fill, class: 'avatar' %>
+            </div>
           </div>
         <% end %>
       <% else %>
