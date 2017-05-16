@@ -18,9 +18,11 @@
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <% if current_user.photo? %>
-            <%= cl_image_tag current_user.photo.path, width: 30, height: 30, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+            <%= cl_image_tag current_user.photo.path, width: 30, height: 30, crop: :fill, class: "avatar avatar-small dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <% elsif current_user.facebook_picture_url %>
+            <%= image_tag current_user.facebook_picture_url, class: "avatar avatar-small dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <% else %>
-            <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+            <%= image_tag "captain.png", class: "avatar avatar-small dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <% end %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
