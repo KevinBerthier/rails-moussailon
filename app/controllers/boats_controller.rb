@@ -10,9 +10,10 @@ class BoatsController < ApplicationController
       @boats = Boat.all
     end
     # geocoder script
-    @hash = Gmaps4rails.build_markers(@boats) do |boat, marker|
-      marker.lat flat.latitude
-      marker.lng flat.longitude
+    @bobos = Boat.where.not(latitude: nil, longitude: nil)
+    @hash = Gmaps4rails.build_markers(@bobos) do |bobo, marker|
+      marker.lat bobo.latitude
+      marker.lng bobo.longitude
     end
   end
 
