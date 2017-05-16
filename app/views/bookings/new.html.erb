@@ -11,7 +11,7 @@
 
        <div class="">
         <!-- résa -->
-        <h2 class="txt-mmd padded-md">Dates de réservation</h2>
+        <h2 class="txt-md txt-heavy padded-md">Dates de réservation</h2>
         <div class="row">
            <div class="col-xs-6 col-md-6">
              <p class="txt-sm">Prise en main</p>
@@ -22,13 +22,13 @@
              <p class="txt-bold"><%= @booking.date_check_out %></p>
            </div>
         </div>
-        <p class="txt-description padded-md">Durée de navigation : <strong><%= d = (@booking.date_check_out - @booking.date_check_in + 1).to_i %> <%= d == 1 ? "jour" : "jours"  %></strong></p>
+        <p class="txt-description padded-md">durée de navigation : <strong><%= d = (@booking.date_check_out - @booking.date_check_in + 1).to_i %> <%= d == 1 ? "jour" : "jours"  %></strong></p>
         <hr style="height:1px;" />
        </div>
 
        <div class="">
         <!-- caracteristiques -->
-        <h2 class="txt-mmd padded-md">Embarcation</h2>
+        <h2 class="txt-md txt-heavy padded-md">Embarcation</h2>
         <div class="row">
            <div class="col-xs-6 col-md-6">
              <p class="txt-description">Nom du bâteau</p>
@@ -56,7 +56,7 @@
 
        <div class="">
        <!-- prix -->
-        <h2 class="txt-mmd padded-md">Prix</h2>
+        <h2 class="txt-md txt-heavy padded-md">Prix</h2>
         <div class="row">
            <div class="col-xs-6 col-md-6">
              <p class="txt-description">Prix total</p>
@@ -64,7 +64,7 @@
            </div>
            <div class="col-xs-6 col-md-6">
              <p class="txt-description txt-bold"><%= @booking.total_price  %> €</p>
-             <p class="txt-description txt-bold"><%= @booking.total_price * 3  %> €</p>
+             <p class="txt-description txt-bold"><%= @booking.total_price * 2  %> €</p>
            </div>
         </div>
         <hr style="height: 1px;" />
@@ -91,7 +91,7 @@
          <%= simple_form_for [@boat, @booking] do |f| %>
          <%= f.input :date_check_in, as: :hidden %>
          <%= f.input :date_check_out, as: :hidden  %>
-         <%= f.submit "Confirm Booking", class: "btn btn-default margin-btn" %>
+         <%= f.submit "Confirmer", class: "btn btn-default margin-btn" %>
          <% end %>
        </div>
       </div>
