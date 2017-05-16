@@ -3,13 +3,22 @@ class BoatsController < ApplicationController
 
   # GET /boats
   def index
-    # if params[:city] != ""
-    #   params[:city].capitalize!
-    #   @boats = Boat.where(city: params[:city])
-    # else
-    #   @boats = Boat.all
-    # end
-    @boats = Boat.search_city(params[:city])
+    query = params.select do |k,v|
+      if v != ""
+        k == "gender" || k == "city"
+      end
+    end
+    query_values = query.values
+
+    if params[:capacity] != "" && query_values != []
+      @boats = Boat.where(capacity: params[:capacity].to_i..900).search_params(query_values)
+    elsif query_values == []
+      @boats = Boat.all
+    elsif params[:capacity] != "" && query_values == []
+      @boats = Boat.where(capacity: params[:capacity].to_i..900)
+    else
+      @boats = Boat.search_params(query_values)
+    end
   end
 
   # GET /boats/1

@@ -10,7 +10,5 @@ class Boat < ApplicationRecord
   has_attachments :photos, maximum: 3
 
   include PgSearch
-  pg_search_scope :search_city, against: [ :city ]
-  pg_search_scope :search_capacity, against: [ :capacity ]
-  pg_search_scope :search_gender, against: [ :gender ]
+  pg_search_scope :search_params, against: [ :city, :capacity, :gender ]
 end
