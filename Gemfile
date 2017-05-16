@@ -25,6 +25,7 @@ gem 'coffee-rails'
 
 # User
 gem 'devise', git: 'https://github.com/plataformatec/devise.git', branch: 'master'
+gem 'omniauth-facebook'
 
 group :development, :test do
   gem 'binding_of_caller'
