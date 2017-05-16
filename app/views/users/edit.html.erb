@@ -12,6 +12,7 @@
             <%= f.input :photo, as: :attachinary %>
             <%= f.submit "submit", class: "btn btn-primary" %>
           <% end %>
+          <%= link_to "Supprimer le compte" , edit_profile_path, method: :delete, :confirm => "Etes vous sûr de vouloir supprimer votre compte?" %>
         </div>
       </div>
     </div>

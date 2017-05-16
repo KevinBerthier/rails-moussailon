@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   # DELETE /users/1
   def destroy
     @user.destroy
-    redirect_to users_url, notice: 'Votre profil a bien été supprimé'
+    redirect_to root_path, notice: 'Votre profil a bien été supprimé'
   end
 
   private
