@@ -1,5 +1,5 @@
 .tab {
-  padding-top: 50px;
+  padding-top: 100px;
   margin-bottom: 20px;
   position: relative;
   overflow: hidden;
@@ -22,7 +22,7 @@
 
   li {
     float: left;
-    line-height: 38px;
+    line-height: 42px;
     overflow: hidden;
     padding: 0;
     position: relative;
@@ -30,6 +30,7 @@
 
   a {
     background-color: #eff0f2;
+    width: 272px;
     border-bottom: 1px solid #fff;
     color: #888;
     font-weight: 500;
@@ -56,9 +57,8 @@
   }
 
   img {
-    width: 200px;
     float: left;
-    margin-right: 30px;
+    margin-right: 40px;
   }
 
   &:first-child {display: block;}

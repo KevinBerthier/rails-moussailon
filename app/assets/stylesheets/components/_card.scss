@@ -6,12 +6,25 @@
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.1);
   position: relative;
+}
+.card-white-fix {
+  background-color: white;
+  padding: 15px 25px;
+  border-radius: 2px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  position: relative;
   height: 150px;
 }
 .card-white-edit {
   position: absolute;
   right: 20px;
   bottom: 10px;
+}
+.card-white-avatar {
+  position: absolute;
+  right: 10px;
+  top: 10px;
 }
 // Card de Boats Show
 .card-show {
