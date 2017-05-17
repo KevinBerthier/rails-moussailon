@@ -25,6 +25,9 @@ gem 'autoprefixer-rails'
 gem 'simple_form', github: 'elsurudo/simple_form', branch: 'rails-5.1.0'
 gem 'erubis'
 
+# search
+gem 'pg_search'
+
 # Photo
 gem 'cloudinary'
 gem 'attachinary', github: 'assembler/attachinary'

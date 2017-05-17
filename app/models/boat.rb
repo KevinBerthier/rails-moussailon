@@ -1,5 +1,7 @@
 class Boat < ApplicationRecord
-  GENDER = ["Voilier", "Bateau à moteur", "Catamaran", "Semi-rigide", "Yacht"]
+  include PgSearch
+
+  after_validation :geocode, if: :address_changed?
   belongs_to :user
   has_many :bookings
   has_attachments :photos, maximum: 3
@@ -12,4 +14,8 @@ class Boat < ApplicationRecord
   validates :city, presence: true
   validates :price, numericality: true
   validates :capacity, numericality: true
+
+  pg_search_scope :search_params, against: [ :city, :address, :capacity, :gender ]
+
+  GENDER = ["Voilier", "Bateau à moteur", "Catamaran", "Semi-rigide", "Yacht"]
 end
