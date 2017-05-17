@@ -59,7 +59,10 @@
                     <p class="txt-light">Note moyenne</p>
                     <p class="txt-light">Price : <%= boat.price %> €/j </p>
                   </div>
-                  <p class="card-white-edit txt-bold"><%= link_to "Modifier votre bateau", edit_boat_path(boat) %></p>
+                  <div class="card-white-edit txt-bold">
+                  <p> <%= link_to "Modifier votre bateau", edit_boat_path(boat) %></p>
+                  <%= link_to "Supprimer ce bâteau", boat_path(boat), method: :delete , data: { confirm: 'Are you sure?' }%>
+                  </div>
                 </div>
               </div>
             <% end %>
@@ -128,28 +131,32 @@
         <div class="class tabs_item">
           <% if @user.bookings %>
             <% @user.bookings.all.each do |booking| %>
-              <div class="card-white-fix margin-top-sm">
-                <% card_img_path = %>
-                <% if booking.boat.photos? %>
-                  <% cl_image_path booking.boat.photos.first.path %>
-                <% else %>
-                  <% image_path 'boat1.jpg' %>
-                <% end %>
+              <div class="col-sm-12 card-white-fix margin-top-sm">
+                <div class="row">
+                  <% card_img_path = %>
+                  <% if booking.boat.photos? %>
+                    <% cl_image_path booking.boat.photos.first.path, width: 180, height: 120, crop: :fill  %>
+                  <% else %>
+                    <% image_path 'boat1.jpg' %>
+                  <% end %>
 
-                <%= cl_image_tag card_img_path, height: 120, crop: :fill %>
-                <p class="txt-bold txt-md"><%= booking.boat.name %> </p>
-                <p>Du <%= booking.date_check_in.to_formatted_s(:rfc822) %> au <%= booking.date_check_out.to_formatted_s(:rfc822) %></p>
-                <p class="txt-light">Prix : <%= booking.total_price %> € </p>
-                <p class="card-white-edit txt-bold"><%= link_to "Modifier", edit_boat_booking_path(booking.boat,booking) %></p>
-                <%# link_to "détails", boat_booking_path(booking)  %>
+                  <%= cl_image_tag card_img_path, crop: :fill, class: "col-xs-12 col-sm-6 col-md-4 " %>
+                  <div class="col-xs-12 col-md-4" >
+                    <p class="txt-bold txt-md"><%= booking.boat.name %> </p>
+                    <p>Du <%= booking.date_check_in.to_formatted_s(:rfc822) %> au <%= booking.date_check_out.to_formatted_s(:rfc822) %></p>
+                    <p class="txt-light">Prix : <%= booking.total_price %> € </p>
+                  </div>
+                    <p class="card-white-edit txt-bold"><%= link_to "Modifier", edit_boat_booking_path(booking.boat,booking) %></p>
+                    <%# link_to "détails", boat_booking_path(booking)  %>
 
-                <% if booking.boat.user.photo? %>
-                  <% avatar_owner = cl_image_path booking.boat.user.photo.path %>
-                <% else %>
-                  <% avatar_owner = image_path 'captain.png' %>
-                <% end %>
+                  <% if booking.boat.user.photo? %>
+                    <% avatar_owner = cl_image_path booking.boat.user.photo.path %>
+                  <% else %>
+                    <% avatar_owner = image_path 'captain.png' %>
+                  <% end %>
 
-                <div class="card-white-avatar"> <%= cl_image_tag avatar_owner, height: 40, width: 40, crop: :fill, class: 'avatar' %>
+                  <%= cl_image_tag avatar_owner, height: 40, width: 40, crop: :fill, class: 'avatar card-white-avatar' %>
+
                 </div>
               </div>
             <% end %>

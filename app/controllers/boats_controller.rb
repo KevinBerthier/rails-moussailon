@@ -75,7 +75,7 @@ class BoatsController < ApplicationController
   # DELETE /boats/1
   def destroy
     @boat.destroy
-    redirect_to boats_url, notice: 'Votre bateau a bien été retiré'
+    redirect_to dashboard_url, notice: 'Votre bateau a bien été retiré'
   end
 
   private

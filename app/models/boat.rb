@@ -2,7 +2,7 @@ class Boat < ApplicationRecord
   GENDER = ["Voilier", "Bateau à moteur", "Catamaran", "Semi-rigide", "Yacht"]
   after_validation :geocode, if: :address_changed?
   belongs_to :user
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
   validates :name, presence: true
   validates :address, presence: true
   validates :city, presence: true
