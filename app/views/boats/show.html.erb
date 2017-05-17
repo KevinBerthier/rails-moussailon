@@ -2,58 +2,57 @@
 
 <%= render "carousel" %>
 
-<div class="container padded-sides">
+<div class="container">
+  <div class="col-xs-12 col-md-10 col-md-offset-1">
   <!-- Description moussaillon -->
+    <div class="row">
+      <div class="col-offset-2 col-sm-6 padded-bottom-sm">
 
-  <div class="row">
-    <div class="col-offset-2 col-sm-6">
+        <h2 class=" txt-md txt-heavy padded-left"><%= @boat.user.first_name%> <%= @boat.user.last_name %></h2>
+        <p class="txt-md txt-bold txt-blue txt-height-sm upcase padded-left">moussaillon</p>
 
-      <h2 class=" txt-md txt-heavy padded-left"><%= @boat.user.first_name%> <%= @boat.user.last_name %></h2>
-      <p class="txt-md txt-bold txt-blue txt-height-sm upcase padded-left">moussaillon</p>
+        <p class="txt-description txt-light padded-sm padded-left">
+          <%= @boat.user.description %>
+        </p>
+      </div>
 
-      <p class="txt-description txt-light padded-sm padded-left">
-        <%= @boat.user.description %>
-      </p>
+      <div class="col-offset-2 col-sm-6 text-center padded-top-neg">
+        <% if @boat.user.photo? %>
+          <% image = cl_image_path @boat.user.photo.path %>
+        <% else %>
+          <% image = image_path 'captain.png' %>
+        <% end %>
+
+        <%= cl_image_tag image, height: 150, width: 150, crop: :fill, class: 'avatar' %>
+      </div>
     </div>
 
-    <div class="col-offset-2 col-sm-6 text-center padded-top-neg">
-      <% if @boat.user.photo? %>
-        <% image = cl_image_path @boat.user.photo.path %>
-      <% else %>
-        <% image = image_path 'captain.png' %>
-      <% end %>
-
-      <%= cl_image_tag image, height: 150, width: 150, crop: :fill, class: 'avatar' %>
+    <div class="">
+      <hr style="height:1px;" />
     </div>
-  </div>
-
-  <div class="padded-top">
-    <hr style="height:1px;" />
-  </div>
 
 
-  <!-- Description du bâteau -->
+    <!-- Description du bâteau -->
 
     <h2 class="txt-md txt-heavy padded-left">description du bâteau</h2>
 
-  <div class="padded-sides-sm">
-    <div class="row padded-lg">
-      <div class="col-xs-12 col-sm-3 text-center">
+    <div class="row">
+      <div class="col-xs-12 col-sm-3 text-center padded-md">
         <%= image_tag 'icon-type.png', class: "icon" %>
         <h3 class="upcase txt-light txt-description">type</h3>
         <p class="txt-description"><%= @boat.gender %></p>
       </div>
-      <div class="col-xs-12 col-sm-3 text-center">
+      <div class="col-xs-12 col-sm-3 text-center padded-md">
         <%= image_tag 'icon-port.png', class: "icon" %>
         <h3 class="upcase txt-light txt-description">port d'attache</h3>
         <p class="txt-description"><%= @boat.city %></p>
       </div>
-      <div class="col-xs-12 col-sm-3 text-center">
+      <div class="col-xs-12 col-sm-3 text-center padded-md">
         <%= image_tag 'icon-capacity.png', class: "icon" %>
         <h3 class="upcase txt-light txt-description">capacity</h3>
         <p class="txt-description"><%= @boat.capacity %> personnes</p>
       </div>
-      <div class="col-xs-12 col-sm-3 text-center">
+      <div class="col-xs-12 col-sm-3 text-center padded-md">
         <%= image_tag 'icon-pricetag.png', class: "icon" %>
         <h3 class="upcase txt-light txt-description">prix</h3>
         <p class="txt-description"><%= @boat.price %> €/j</p>
@@ -64,36 +63,36 @@
     <p class="txt-description txt-light">
       <%= @boat.description %>
     </p>
-  </div>
 
 
-  <!-- Formulaire -->
-  <div class="padded-top padded-md row">
 
-    <form action="<%= new_boat_booking_path(@boat) %>" method="GET" class="col-sm-4 col-sm-offset-4">
+    <!-- Formulaire -->
+    <div class="padded-top padded-md row">
 
-      <div class="form-group">
-          <label for="checkin" class="sr-only">Checkin</label>
-          <input class="form-control" type="date" value="<%= params[:date_check_in] %>" id="checkin" name="date_check_in">
-      </div>
+      <form action="<%= new_boat_booking_path(@boat) %>" method="GET" class="col-sm-4 col-sm-offset-4">
 
-      <div class="form-group">
-          <label for="checkout" class="sr-only">Checkout</label>
-          <input class="form-control" type="date" value="<%= params[:date_check_out] %>" id="checkout" name="date_check_out">
-      </div>
+        <div class="form-group">
+            <label for="checkin" class="sr-only">Checkin</label>
+            <input class="form-control" type="date" value="<%= params[:date_check_in] %>" id="checkin" name="date_check_in">
+        </div>
 
-      <button type="submit" class="btn btn-default btn-block">RÉSERVER</button>
-    </form>
-  </div>
-</div>
+        <div class="form-group">
+            <label for="checkout" class="sr-only">Checkout</label>
+            <input class="form-control" type="date" value="<%= params[:date_check_out] %>" id="checkout" name="date_check_out">
+        </div>
 
-  <!-- dynamic map geocoder -->
-<div class="container padded-sides">
-  <!-- Description moussaillon -->
+        <button type="submit" class="btn btn-default btn-block">RÉSERVER</button>
+      </form>
+    </div>
 
-  <div class="row">
-    <div class="col-xs-12 col-sm-12">
-      <div id="map" style="width: 100%; height: 600px;"></div>
+
+    <!-- dynamic map geocoder -->
+
+    <!-- Description moussaillon -->
+
+    <div class="row margin-bottom-md">
+      <div class="col-xs-12 col-sm-12">
+        <div id="map" style="width: 100%; height: 600px;"></div>
 
         <% content_for(:after_js) do %>
           <script>
@@ -114,46 +113,44 @@
         <% end %>
       </div>
     </div>
-  </div>
-</div>
 
-  <!-- Commentaires / Reviews -->
-<div class="container padded-sides">
-  <div class="margin-bottom-md">
-    <h2 class="txt-md txt-heavy padded-left padded-bottom-sm">commentaires</h2>
 
-    <div class="row">
-      <div class="col-xs-12 col-sm-4">
-        <div class="card-white">
-          <%= image_tag 'kevin.png', class: "avatar avatar-small" %>
-          <h4 class="txt-description txt-bold">Arnaud</h4>
-          <p class="txt-light txt-sm">11 mai 2017</p>
-          <p class="txt-description txt-light">Nous avons passé une magnifique journée dans les Calanques à bord du Shot Gun. Je recommande à 200% !</p>
+    <!-- Commentaires / Reviews -->
+
+    <div class="margin-bottom-md">
+      <h2 class="txt-md txt-heavy padded-left padded-bottom-sm">commentaires</h2>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-4 padded-sm">
+          <div class="card-white">
+            <%= image_tag 'kevin.png', class: "avatar avatar-small" %>
+            <h4 class="txt-description txt-bold">Arnaud</h4>
+            <p class="txt-light txt-sm">11 mai 2017</p>
+            <p class="txt-description txt-light">Nous avons passé une magnifique journée dans les Calanques à bord du Shot Gun. Je recommande à 200% !</p>
+          </div>
         </div>
-      </div>
 
-      <div class="col-xs-12 col-sm-4">
-        <div class="card-white">
-          <%= image_tag 'loic.png', class: "avatar avatar-small" %>
-          <h4 class="txt-description txt-bold">Louis</h4>
-          <p class="txt-light txt-sm">19 mai 2017</p>
-          <p class="txt-description txt-light">Très beau bâteau, belle ligne de flottaison, tient bien la mer. Excellente navigation malgré une météo grisonnante.</p>
+        <div class="col-xs-12 col-sm-4 padded-sm">
+          <div class="card-white">
+            <%= image_tag 'loic.png', class: "avatar avatar-small" %>
+            <h4 class="txt-description txt-bold">Louis</h4>
+            <p class="txt-light txt-sm">19 mai 2017</p>
+            <p class="txt-description txt-light">Très beau bâteau, belle ligne de flottaison, tient bien la mer. Excellente navigation malgré une météo grisonnante.</p>
+          </div>
         </div>
-      </div>
 
-      <div class="col-xs-12 col-sm-4">
-        <div class="card-white">
-          <%= image_tag 'odaia.png', class: "avatar avatar-small" %>
-          <h4 class="txt-description txt-bold">Odaia</h4>
-          <p class="txt-light txt-sm">3 mai 2017</p>
-          <p class="txt-description txt-light">Elliot a adoré danser sur le pont avant de sauter du mât. Merci pour ce bel après-midi en mode pirate des mers turquoises!</p>
+        <div class="col-xs-12 col-sm-4 padded-sm">
+          <div class="card-white">
+            <%= image_tag 'odaia.png', class: "avatar avatar-small" %>
+            <h4 class="txt-description txt-bold">Odaia</h4>
+            <p class="txt-light txt-sm">3 mai 2017</p>
+            <p class="txt-description txt-light">Elliot a adoré danser sur le pont avant de sauter du mât. Merci pour ce bel après-midi en mode pirate des mers turquoises!</p>
+          </div>
         </div>
       </div>
     </div>
 
-    </div>
-
-  <!-- Autres recommandations -->
+    <!-- Autres recommandations -->
 
     <!-- <div class="padded-top">
       <hr style="height:1px;" />
@@ -162,5 +159,5 @@
     <!-- <div>
       <h2 class="txt-md txt-heavy">autres recommandations</h2>
     </div> -->
-
+  </div>
 </div>
