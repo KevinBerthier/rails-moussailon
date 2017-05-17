@@ -85,37 +85,9 @@
       </form>
     </div>
 
-
-    <!-- dynamic map geocoder -->
-
-    <!-- Description moussaillon -->
-
-    <div class="row margin-bottom-md">
-      <div class="col-xs-12 col-sm-12">
-        <div id="map" style="width: 100%; height: 600px;"></div>
-
-        <% content_for(:after_js) do %>
-          <script>
-            $(document).ready(function() {
-              var handler = Gmaps.build('Google');
-              handler.buildMap({ internal: { id: 'map' } }, function() {
-                markers = handler.addMarkers(<%= raw @hash.to_json %>);
-                handler.bounds.extendWith(markers);
-                handler.fitMapToBounds();
-                if (markers.length == 0) {
-                  handler.getMap().setZoom(2);
-                } else if (markers.length == 1) {
-                  handler.getMap().setZoom(14);
-                }
-              });
-            });
-          </script>
-        <% end %>
-      </div>
-    </div>
-
-
     <!-- Commentaires / Reviews -->
+
+  <div class="container padded-sides">
 
     <div class="margin-bottom-md">
       <h2 class="txt-md txt-heavy padded-left padded-bottom-sm">commentaires</h2>
