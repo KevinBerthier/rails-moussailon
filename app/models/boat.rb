@@ -18,5 +18,5 @@ class Boat < ApplicationRecord
 
   pg_search_scope :search_params, against: [ :city, :address, :capacity, :gender ]
 
-  GENDER = ["Voilier", "Bateau à moteur", "Catamaran", "Semi-rigide", "Yacht"]
+  GENDER = ["", "Voilier", "Bateau à moteur", "Catamaran", "Semi-rigide", "Yacht"]
 end
