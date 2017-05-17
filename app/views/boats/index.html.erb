@@ -8,12 +8,12 @@
       <div class="hidden-xs hidden-sm">
         <%= render "form_index_lg" %>
       </div>
-    
+
       <div class="hidden-md hidden-lg">
         <%= render "form_index_sm" %>
 
       <div class="form-group row form-inline">
-        <%= select_tag :gender, options_for_select(Boat::GENDER, selected: params[:gender]),:prompt => "Type", class: "form-control" %>
+        <%= select_tag :gender, options_for_select(Boat::GENDER, selected: params[:gender]), prompt: "Type", class: "form-control" %>
 
         <%= text_field_tag :capacity, params[:capacity], class: "form-control", placeholder: "nb personnes" %>
 
