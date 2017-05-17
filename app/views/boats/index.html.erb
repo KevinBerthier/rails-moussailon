@@ -4,15 +4,13 @@
 
   <div class="padded-md">
     <%= form_tag boats_path, method: "get", class: " text-center padded" do %>
-      <div class="form-group row form-inline">
-        <%= text_field_tag :city, params[:city], class: "form-control", placeholder: "Saint Tropez" %>
 
-        <label for="checkin" class="sr-only">Checkin</label>
-        <input class="form-control" type="date" value="<%= params[:date_check_in] %>" id="checkin" name="date_check_in">
-
-        <label for="checkout" class="sr-only">Checkout</label>
-        <input class="form-control" type="date" value="<%= params[:date_check_out] %>" id="checkout" name="date_check_out">
+      <div class="hidden-xs hidden-sm">
+        <%= render "form_index_lg" %>
       </div>
+    
+      <div class="hidden-md hidden-lg">
+        <%= render "form_index_sm" %>
 
       <div class="form-group row form-inline">
         <%= select_tag :gender, options_for_select(Boat::GENDER, selected: params[:gender]),:prompt => "Type", class: "form-control" %>
