@@ -1,4 +1,4 @@
-<div class="padded-md" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_url "home-background.jpg" %>');">
+<div class="padded-md" style="background-image: linear-gradient(-225deg, rgba(0, 101, 168, 0.6) 0%, rgba(55, 101, 132, 0.4) 80%), url('<%= image_url "form-back.jpg" %>');">
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-sm-offset-3">
@@ -10,9 +10,13 @@
             <%= f.input :description %>
             <%= f.input :phone %>
             <%= f.input :photo, as: :attachinary %>
-            <%= f.submit "submit", class: "btn btn-primary" %>
+            <div class="text-center">
+              <%= f.submit "submit", class: "btn btn-primary " %>
+            </div>
           <% end %>
-          <%= link_to "Supprimer le compte" , edit_profile_path, method: :delete, :confirm => "Etes vous sûr de vouloir supprimer votre compte?" %>
+          <div class="text-center margin-top-sm">
+            <%= link_to "Supprimer le compte" , edit_profile_path, method: :delete, :confirm => "Etes vous sûr de vouloir supprimer votre compte?" %>
+          </div>
         </div>
       </div>
     </div>
