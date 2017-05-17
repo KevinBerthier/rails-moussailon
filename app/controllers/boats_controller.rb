@@ -20,11 +20,13 @@ class BoatsController < ApplicationController
       @boats = Boat.search_params(query_values)
     end
     # geocoder script
-    @bobos = Boat.where.not(latitude: nil, longitude: nil)
-    @hash = Gmaps4rails.build_markers(@bobos) do |bobo, marker|
-      marker.lat bobo.latitude
-      marker.lng bobo.longitude
+    @hash = Gmaps4rails.build_markers(@boats) do |bobo, marker|
+      if bobo[:latitude] != nil
+        marker.lat bobo.latitude
+        marker.lng bobo.longitude
+      end
     end
+    @hash = @hash.reject  { |h| h == {} }
   end
 
   # GET /boats/1
