@@ -4,7 +4,7 @@
   position: relative;
   overflow: hidden;
   background: #fff;
-  width: 70%;
+  width: 100%;
   margin: 0 auto;
   font-family: 'Raleway', sans-serif;
   line-height: 1.5;
@@ -19,6 +19,16 @@
   overflow: hidden;
   margin: 0;
   width: 100%;
+  padding-left:0;
+  margin-left: 0;
+
+  ul {
+    width: 100%;
+    list-style-type: none;
+    -webkit-padding-start: 0;
+    padding-left:0;
+    margin-left: 0;
+  }
 
   li {
     float: left;
@@ -26,11 +36,11 @@
     overflow: hidden;
     padding: 0;
     position: relative;
+    display: table-cell;
   }
 
   a {
     background-color: #eff0f2;
-    width: 272px;
     border-bottom: 1px solid #fff;
     color: #888;
     font-weight: 500;
@@ -56,10 +66,10 @@
     font-size: 20px;
   }
 
-  img {
-    float: left;
-    margin-right: 40px;
-  }
+  // img {
+  //   float: left;
+  //   margin-right: 40px;
+  // }
 
   &:first-child {display: block;}
 }
