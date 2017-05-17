@@ -14,7 +14,12 @@
           <%= f.input :price %>
           <%= f.input :description %>
           <%= f.input :photos, as: :attachinary %>
-          <%= f.submit "Submit", class: "btn btn-default" %>
+          <div class="text-center hidden-xs hidden-sm">
+            <%= f.submit "Submit", class: "btn btn-default" %>
+          </div>
+           <div class="hidden-lg hidden-md">
+             <%= f.submit "Submit", class: "btn btn-default btn-block" %>
+           </div>
           <% end %>
         </div>
       </div>
