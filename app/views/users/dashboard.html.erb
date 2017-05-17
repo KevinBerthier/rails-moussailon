@@ -1,155 +1,172 @@
-<div class="container padded-sides-lg">
+<div class="container">
+  <div class="col-md-10 col-md-offset-1">
 
-  <h2 class="txt-heavy txt-blue padded-md padded-left">Bonjour <%=  @user.first_name %> !</h2>
+    <h2 class="txt-heavy txt-blue padded-md padded-left">Bonjour <%=  @user.first_name %> !</h2>
 
-  <div class="row">
-    <div class="col-sm-4 text-center">
-      <% if current_user.photo? %>
-        <%= cl_image_tag current_user.photo.path, width: 100, height: 100, crop: :fill, class: "avatar avatar-large", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-      <% elsif current_user.facebook_picture_url %>
-        <%= image_tag current_user.facebook_picture_url, class: "avatar avatar-large dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-      <% else %>
-        <%= image_tag "captain.png", class: "avatar avatar-large", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-      <% end %>
-      <div class="txt-md txt-light text-center padded-top"><%= @user.first_name %></div>
-      <p class="txt-md txt-light text-center"><%= @user.last_name %></p>
-      <%= link_to "Editez votre profil", edit_profile_path, class: "btn btn-simple" %>
-    </div>
-
-    <div class="col-sm-8">
-      <h2 class="txt-md txt-heavy">notifications</h2>
-      <p class="txt-light">Vérifiez votre pièce d'identité</p>
-      <p class="txt-light">Notez votre dernière location</p>
-      <hr>
-
-        <h2 class="txt-md txt-heavy padded-top">messages</h2>
-        <p class="txt-light">Bonjour, je souhaiterais louer votre bâteau, c'est possible d'avoir un prix ? Merci</p>
-    </div>
-  </div>
-</div>
-
-
-<!-- Tabs -->
-<div class="tab">
-  <ul class="tabs text-center">
-    <li><a href="#">Gestion de ma flotte</a></li>
-    <li><a href="#">Ils ont réservé</a></li>
-    <li><a href="#">Mes sorties en mer</a></li>
-  </ul>
-
-  <!-- Gestion de ma flotte -->
-  <div class="tab_content padded-sides-sm">
-    <div class="class tabs_item">
-      <% if @user.boats %>
-        <% @user.boats.all.each do |boat| %>
-          <div class="card-white-fix margin-top-sm">
-            <% card_img_path = %>
-            <% if boat.photos? %>
-              <% cl_image_path boat.photos.first.path, width: 180, height: 120, crop: :fill %>
-            <% else %>
-              <% image_path 'boat1.jpg' %>
-            <% end %>
-
-            <%= cl_image_tag card_img_path  %>
-            <p class="txt-bold txt-md"><%= boat.name %> </p>
-            <p class="txt-light">Note moyenne</p>
-            <p class="txt-light">Price : <%= boat.price %> €/j </p>
-            <p class="card-white-edit txt-bold"><%= link_to "Modifier votre bateau", edit_boat_path(boat) %></p>
-          </div>
+    <div class="row">
+      <div class="col-sm-4 text-center">
+        <% if current_user.photo? %>
+          <%= cl_image_tag current_user.photo.path, width: 100, height: 100, crop: :fill, class: "avatar avatar-large", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        <% elsif current_user.facebook_picture_url %>
+          <%= image_tag current_user.facebook_picture_url, class: "avatar avatar-large dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        <% else %>
+          <%= image_tag "captain.png", class: "avatar avatar-large", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
         <% end %>
-      <% else %>
-        <p class="txt-light">Vous n'avez pas d'annonce</p>
-        <%= link_to "Enregistrez votre bateau", new_boat_path, class: "btn btn-default" %>
-      <% end %>
+        <div class="txt-md txt-light text-center padded-top"><%= @user.first_name %></div>
+        <p class="txt-md txt-light text-center"><%= @user.last_name %></p>
+        <%= link_to "Editez votre profil", edit_profile_path, class: "btn btn-simple" %>
+      </div>
+
+      <div class="col-sm-8 padded-top">
+        <h2 class="txt-md txt-heavy">notifications</h2>
+        <p class="txt-light">Vérifiez votre pièce d'identité</p>
+        <p class="txt-light">Notez votre dernière location</p>
+        <hr>
+
+          <h2 class="txt-md txt-heavy padded-top">messages</h2>
+          <p class="txt-light">Bonjour, je souhaiterais louer votre bâteau, c'est possible d'avoir un prix ? Merci</p>
+      </div>
     </div>
 
 
-    <!-- Ils ont réservé -->
-    <div class="class tabs_item">
-      <% if @user.boats %>
-        <% @user.boats.all.each do |boat| %>
-          <% boat.bookings.each do |booking| %>
-            <div class="col-sm-12 card-white-fix margin-top">
-              <% user_img_path = %>
-                <% if booking.user.photo? %>
-                  <% cl_image_path boat.user.photo.path %>
-                <% else %>
-                  <% image_path 'captain.png' %>
-                <% end %>
+    <!-- Tabs -->
+    <div class="tab">
+      <ul class="tabs text-center">
+        <div class="row">
+          <li class="col-xs-12 col-md-4"><a href="#">Gestion de ma flotte</a></li>
+          <li class="col-xs-12 col-md-4"><a href="#">Ils ont réservé</a></li>
+          <li class="col-xs-12 col-md-4"><a href="#">Mes sorties en mer</a></li>
+        </div>
+      </ul>
 
-                <%= cl_image_tag user_img_path, height: 120, crop: :fill, class: 'avatar padded-sides-sm' %>
-                <div>
-                  <p class="txt-bold txt-md"><%= boat.name %> </p>
-                  <div>Loué par : <%= booking.user.first_name %> <%= booking.user.last_name %></div>
-                  <div>Réservation : du <%= booking.date_check_in.to_formatted_s(:rfc822) %> au <%= booking.date_check_out.to_formatted_s(:rfc822) %> </div>
-                  <p>Prix total : <%= booking.total_price %> €</p>
-                  <p class="card-white-edit txt-bold"><%# link_to "Détails", boat_booking_path(booking) %></p>
-                  <button type="button" class="btn btn-default card-white-avatar" data-toggle="modal" data-target="#myModal">
-                    Contacter <%= booking.user.first_name %>
-                  </button>
+      <!-- Gestion de ma flotte -->
+      <div class="tab_content">
+        <div class="class tabs_item">
+          <% if @user.boats %>
+            <% @user.boats.all.each do |boat| %>
+              <div class="card-white-fix margin-top-sm">
+                <div class="row">
+                  <% card_img_path = %>
+                  <% if boat.photos? %>
+                    <% cl_image_path boat.photos.first.path, width: 180, height: 120, crop: :fill %>
+                  <% else %>
+                    <% image_path 'boat1.jpg' %>
+                  <% end %>
 
-                  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                          <h4 class="modal-title" id="myModalLabel">Contacter <%= booking.user.first_name %></h4>
-                        </div>
-                        <div class="modal-body">
-                          <p class="txt-regular txt-description"><%= booking.user.phone %></p>
-                          <p class="txt-regular txt-description"><%= booking.user.email %></p>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <%= cl_image_tag card_img_path, class: "col-xs-12 col-sm-6 col-md-4 " %>
+                  <div class="col-xs-12 col-md-4">
+                    <p class="txt-bold txt-md"><%= boat.name %> </p>
+                    <p class="txt-light">Note moyenne</p>
+                    <p class="txt-light">Price : <%= boat.price %> €/j </p>
+                  </div>
+                  <div class="card-white-edit txt-bold">
+                  <p> <%= link_to "Modifier votre bateau", edit_boat_path(boat) %></p>
+                  <%= link_to "Supprimer ce bâteau", boat_path(boat), method: :delete , data: { confirm: 'Are you sure?' }%>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% else %>
+            <p class="txt-light">Vous n'avez pas d'annonce</p>
+            <%= link_to "Enregistrez votre bateau", new_boat_path, class: "btn btn-default" %>
+          <% end %>
+        </div>
+
+
+        <!-- Ils ont réservé -->
+        <div class="class tabs_item">
+          <% if @user.boats %>
+            <% @user.boats.all.each do |boat| %>
+              <% boat.bookings.each do |booking| %>
+                <div class="col-sm-12 card-white-fix margin-top">
+                  <div class="row">
+                    <% user_img_path = %>
+                    <% if booking.user.photo? %>
+                      <% cl_image_path booking.user.photo.path %>
+                    <% else %>
+                      <% image_path 'captain.png' %>
+                    <% end %>
+
+                    <%= cl_image_tag user_img_path, height: 120, crop: :fill, class: 'avatar col-xs-12 col-sm-4 col-md-2 img-responsive' %>
+                    <div class="col-xs-12 col-md-4" >
+                      <p class="txt-bold txt-md"><%= boat.name %> </p>
+                      <div>Loué par : <%= booking.user.first_name %> <%= booking.user.last_name %></div>
+                      <div>Réservation : du <%= booking.date_check_in.to_formatted_s(:rfc822) %> au <%= booking.date_check_out.to_formatted_s(:rfc822) %> </div>
+                      <p>Prix total : <%= booking.total_price %> €</p>
+                      <p class="card-white-edit txt-bold"><%# link_to "Détails", boat_booking_path(booking) %></p>
+                    </div>
+                    <button type="button" class="btn btn-default card-white-avatar col-xs-12 col-md-4" data-toggle="modal" data-target="#myModal">
+                      Contacter <%= booking.user.first_name %>
+                    </button>
+
+
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Contacter <%= booking.user.first_name %></h4>
+                          </div>
+                          <div class="modal-body">
+                            <p class="txt-regular txt-description"><%= booking.user.phone %></p>
+                            <p class="txt-regular txt-description"><%= booking.user.email %></p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-            </div>
+              <% end %>
+            <% end %>
+          <% else %>
+            <p class="txt-light">Votre flotte n'a pas de réservation</p>
           <% end %>
-        <% end %>
-      <% else %>
-        <p class="txt-light">Votre flotte n'a pas de réservation</p>
-      <% end %>
-    </div>
+        </div>
 
 
-    <!-- Mes sorties en mer -->
-    <div class="class tabs_item">
-      <% if @user.bookings %>
-        <% @user.bookings.all.each do |booking| %>
-          <div class="card-white-fix margin-top-sm">
-            <% card_img_path = %>
-            <% if booking.boat.photos? %>
-              <% cl_image_path booking.boat.photos.first.path %>
-            <% else %>
-              <% image_path 'boat1.jpg' %>
+        <!-- Mes sorties en mer -->
+        <div class="class tabs_item">
+          <% if @user.bookings %>
+            <% @user.bookings.all.each do |booking| %>
+              <div class="col-sm-12 card-white-fix margin-top-sm">
+                <div class="row">
+                  <% card_img_path = %>
+                  <% if booking.boat.photos? %>
+                    <% cl_image_path booking.boat.photos.first.path, width: 180, height: 120, crop: :fill  %>
+                  <% else %>
+                    <% image_path 'boat1.jpg' %>
+                  <% end %>
+
+                  <%= cl_image_tag card_img_path, crop: :fill, class: "col-xs-12 col-sm-6 col-md-4 " %>
+                  <div class="col-xs-12 col-md-4" >
+                    <p class="txt-bold txt-md"><%= booking.boat.name %> </p>
+                    <p>Du <%= booking.date_check_in.to_formatted_s(:rfc822) %> au <%= booking.date_check_out.to_formatted_s(:rfc822) %></p>
+                    <p class="txt-light">Prix : <%= booking.total_price %> € </p>
+                  </div>
+                    <p class="card-white-edit txt-bold"><%= link_to "Modifier", edit_boat_booking_path(booking.boat,booking) %></p>
+                    <%# link_to "détails", boat_booking_path(booking)  %>
+
+                  <% if booking.boat.user.photo? %>
+                    <% avatar_owner = cl_image_path booking.boat.user.photo.path %>
+                  <% else %>
+                    <% avatar_owner = image_path 'captain.png' %>
+                  <% end %>
+
+                  <%= cl_image_tag avatar_owner, height: 40, width: 40, crop: :fill, class: 'avatar card-white-avatar' %>
+
+                </div>
+              </div>
             <% end %>
-
-            <%= cl_image_tag card_img_path, height: 120, crop: :fill %>
-            <p class="txt-bold txt-md"><%= booking.boat.name %> </p>
-            <p>Du <%= booking.date_check_in.to_formatted_s(:rfc822) %> au <%= booking.date_check_out.to_formatted_s(:rfc822) %></p>
-            <p class="txt-light">Prix : <%= booking.total_price %> € </p>
-            <p class="card-white-edit txt-bold"><%= link_to "Modifier", edit_boat_booking_path(booking.boat,booking) %></p>
-            <%# link_to "détails", boat_booking_path(booking)  %>
-
-            <% if booking.boat.user.photo? %>
-              <% avatar_owner = cl_image_path booking.boat.user.photo.path %>
-            <% else %>
-              <% avatar_owner = image_path 'captain.png' %>
-            <% end %>
-
-            <div class="card-white-avatar"> <%= cl_image_tag avatar_owner, height: 40, width: 40, crop: :fill, class: 'avatar' %>
-            </div>
-          </div>
-        <% end %>
-      <% else %>
-        <p class="txt-light">Vous n'avez pas encore fait de réservation</p>
-        <%= link_to "Faire une virée", boats_path, class: "btn btn-default" %>
-      <% end %>
+          <% else %>
+            <p class="txt-light">Vous n'avez pas encore fait de réservation</p>
+            <%= link_to "Faire une virée", boats_path, class: "btn btn-default" %>
+          <% end %>
+        </div>
+      </div>
     </div>
-
   </div>
 </div>
 
